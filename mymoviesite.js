@@ -1,3 +1,4 @@
+
 let movieLists = []; // 맨 처음에 로딩될 때 가져온 영화 데이터를 담는 변수
 const button = document.getElementById('search-button');
 const input = document.getElementById('search-input');
@@ -13,14 +14,11 @@ fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', opti
   .then(response => response.json())
   .then(data=> {
   
-
     // 전역변수에 담자
     // 처음엔 전체 영화 출력
     
       movieLists = data.results;
       movieLists.forEach((result)=>{movieCard(result)});
-    
-  
     // 검색어가 들어온다면 검색한 단어를 포함하고 있는 영화만 출력
     // the => the godfather...
     // filterdMovie는 movieList에 키워드가 포함된 영화만 필터링된 배열이다.
@@ -60,6 +58,7 @@ function movieCard(movie){
   // 카드 누르면 id 뜬다.
   card.addEventListener('click',(card)=>{
   alert(`ID : ${id}`);})
+ 
   }
 
 
