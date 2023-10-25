@@ -27,6 +27,11 @@ fetch('https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=1', opti
   .catch(err => console.error(err));
 
 
+// 섹션 1 미리보기 카드 
+
+
+
+
 
 // making movie card
 function movieCard(movie){
