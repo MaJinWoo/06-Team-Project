@@ -10,7 +10,7 @@ const options = {
   }
 };
 
-fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', options)
+fetch('https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=1', options)
   .then(response => response.json())
   .then(data=> {
   
@@ -35,25 +35,30 @@ function movieCard(movie){
   const posterPath = movie['poster_path'];
   const voteAverage = movie['vote_average'];
   const id = movie['id'];
+  const subTitle = movie['original_title'];
 
   const card = document.createElement('div');
   const image = document.createElement('img');
   const titleHTML = document.createElement('h3');
-  const overviewHTML = document.createElement('p');
+  // const overviewHTML = document.createElement('p');
   const voteAverageHTML = document.createElement('p');
-
-  const moviecard = document.getElementById('movie_info');
+  const subHTML = document.createElement('p');
+  const moviecard = document.querySelector('.movie__card');
 
   titleHTML.append(title);
-  overviewHTML.append(overview);
-  voteAverageHTML.append("Vote Average : "+voteAverage);
+  // overviewHTML.append(overview);
+  voteAverageHTML.append(voteAverage);
   image.src = `https://image.tmdb.org/t/p/w500${posterPath}`;
+  subHTML.append(subTitle);
 
   moviecard.appendChild(card);
   card.appendChild(image);
   card.appendChild(titleHTML);
-  card.appendChild(overviewHTML);
+  card.appendChild(subHTML);
+
+  // card.appendChild(overviewHTML);
   card.appendChild(voteAverageHTML);
+ 
 
   // 카드 누르면 id 뜬다.
   card.addEventListener('click',(card)=>{
