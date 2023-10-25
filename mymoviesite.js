@@ -13,16 +13,12 @@ const options = {
 fetch('https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=1', options)
     .then((response) => response.json())
     .then((data) => {
-        // 전역변수에 담자
-        // 처음엔 전체 영화 출력
-
         movieLists = data.results;
         movieLists.forEach((result) => {
             movieCard(result);
         });
-        // 검색어가 들어온다면 검색한 단어를 포함하고 있는 영화만 출력
-        // the => the godfather...
-        // filterdMovie는 movieList에 키워드가 포함된 영화만 필터링된 배열이다.
+        // *** 진우 : local staorage에 영화 정보 저장
+        saveMovieLocal();
     })
     .catch((err) => console.error(err));
 
@@ -38,29 +34,39 @@ function movieCard(movie) {
     const card = document.createElement('div');
     const image = document.createElement('img');
     const titleHTML = document.createElement('h3');
-    // const overviewHTML = document.createElement('p');
     const voteAverageHTML = document.createElement('p');
     const subHTML = document.createElement('p');
     const moviecard = document.querySelector('.movie__card');
 
     titleHTML.append(title);
-    // overviewHTML.append(overview);
     voteAverageHTML.append(voteAverage);
     image.src = `https://image.tmdb.org/t/p/w500${posterPath}`;
     subHTML.append(subTitle);
+
+    // *** 진우 : card div에 id 별로 클래스명 지정
+    card.className = id;
+
 
     moviecard.appendChild(card);
     card.appendChild(image);
     card.appendChild(titleHTML);
     card.appendChild(subHTML);
 
-    // card.appendChild(overviewHTML);
     card.appendChild(voteAverageHTML);
 
-    // 카드 누르면 id 뜬다.
-    card.addEventListener('click', (card) => {
-        alert(`ID : ${id}`);
-    });
+    // *** 진우 : 카드 클릭하면 id가 local storage에 저장
+
+    function cardClick(){
+      window.localStorage.setItem("clickedID",id);
+
+    }
+    card.addEventListener('click',cardClick);
+  
+}
+
+// *** 진우 : movie에 영화정보 저장
+function saveMovieLocal(){
+  window.localStorage.setItem("movie", JSON.stringify(movieLists))
 }
 
 // function searchMovie() {
@@ -132,13 +138,3 @@ function onsubmitSearch(e) {
     // 올바른 검색어를 입력했을때 실행될 로직을 아래에 입력해주셔야합니다.
 }
 
-// onclick 여ㄴ결
-// 키워드에 맞게 갱신
-// 키워드 찾아내기
-// 검색
-
-// 1. 화면이 처음 로딩될 때, fetch()를 이용해서 TMDB에서 정보를 다 가지고오자!(이미 되어있음)
-// 2. fetch로 가지고 온 결과물을 변수(전역변수 - 제일 바깥쪽)에 담자
-// 3. 다음 두 가지로 나눠서 화면을 그려주는 함수 호출
-// 3-1. 맨 처음 로딩될 때 : 별도의 필터링 없이 모든 리스트 출력
-// 3-2. 버튼을 눌렀을 때 : 키워드에 해당되는 값만 필터링 해서 리스트 출력
