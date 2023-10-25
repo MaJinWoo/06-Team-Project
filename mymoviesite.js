@@ -28,8 +28,12 @@ fetch('https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=1', opti
 
 
 // 섹션 1 미리보기 카드 
- 
+// 1. 카드를 가져온다
+document.querySelector(".card_detail").innerHTML =
 
+
+// 2. 실제 데이터를 넣어준다
+// 3. 랜덤으로 데이터를 돌린다. 
 
 
 
