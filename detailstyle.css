@@ -1,0 +1,87 @@
+:root {
+    --color-primary: #010101;
+    --color-primary-light: #222222;
+    --color-accent: #ED3124;
+    --color-text: var(--color-black);
+
+    /*  */
+    --color-white: #ffffff;
+    --color-light-gray: #aaaaaa;
+    --color-black: #010101;
+
+    /* 공백 */
+    --space-padding: 4px;
+    --space-margin: 4px;
+
+    /* 폰트사이즈 */
+    --font-lg: 32px;
+    --font-md: 20px;
+    --font-smd: 16px;
+    --font-sm: 14px;
+}
+
+/* 공통 */
+body {
+    background-color: var(--color-primary);
+    color: var(--color-light-gray);
+}
+
+/* 헤더 */
+#header {
+    width: 100%;
+    height: 80px;
+}
+
+#header .container {
+    height: 100%;
+}
+
+.header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1240px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.header__inner h1 a {
+    font-size: var(--font-md);
+    color: var(--color-accent);
+    font-weight: 700;
+}
+
+.input-search {
+    width: 75%;
+    height: 50px;
+    color: white;
+}
+
+.header__inner .button_wrap {
+    display: flex;
+    gap: 40px;
+}
+
+.hidden {
+    display: none;
+}
+
+.movie__detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px calc(var(--space-padding) * 10);
+}
+
+/* .detail__left .mini-title {
+    margin-bottom: 20px;
+    color: #777;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.detail__left,
+.detail__right {
+    flex: 1;
+} */
