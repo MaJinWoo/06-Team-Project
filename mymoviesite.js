@@ -64,6 +64,11 @@ function movieCard(movie) {
   
 }
 
+// *** 진우 : movie에 영화정보 저장
+function saveMovieLocal(){
+  window.localStorage.setItem("movie", JSON.stringify(movieLists))
+}
+
 // function searchMovie() {
 //     function search() {
 //         const moviecard = document.getElementById('movie_info');
