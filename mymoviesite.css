@@ -28,6 +28,7 @@
 body {
     background-color: var(--color-primary);
     color: var(--color-light-gray);
+    transition: background 0.1s;
 }
 body.light-mode {
     background-color: var(--color-white);
@@ -63,6 +64,7 @@ section {
     width: 100%;
     height: 80px;
     background-color: var(--color-black);
+    transition: background 0.1s;
 }
 
 body.light-mode #header {
@@ -260,10 +262,13 @@ p {
     width: 50px;
     height: 50px;
     text-align: center;
+    opacity: 0;
+    transition: opacity 0.2s;
 }
 
 .top__btn path {
     fill: var(--color-white);
+    transition: fill 0.2s;
 }
 
 /* 푸터 */
