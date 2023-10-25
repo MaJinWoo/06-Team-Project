@@ -1,13 +1,13 @@
-@import url('reset.css');
+@import url("reset.css");
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
- 
+
 /* 변수선언 */
-:root{
+:root {
     --color-primary: #010101;
     --color-primary-light: #222222;
-    --color-accent: #ED3124;
+    --color-accent: #ed3124;
     --color-text: var(--color-black);
-    
+
     /*  */
     --color-white: #ffffff;
     --color-light-gray: #aaaaaa;
@@ -24,45 +24,49 @@
     --font-sm: 14px;
 }
 
-
 /* 공통 */
-body{
-  background-color: var(--color-primary);
-  color:var(--color-light-gray);
-  
+body {
+    background-color: var(--color-primary);
+    color: var(--color-light-gray);
+}
+body.light-mode {
+    background-color: var(--color-white);
 }
 
 .hidden {
     display: none;
 }
 
-.container{
+.container {
     max-width: 1280px;
-    padding:0px calc(var(--space-padding) * 5);
-    margin:auto;
+    padding: 0px calc(var(--space-padding) * 5);
+    margin: auto;
 }
 
-button{
-    border:0px;
-    border-radius:10px;
+button {
+    border: 0px;
+    border-radius: 10px;
 }
 
-input{
-    border-radius:10px;
-    border:0px;
-    width:200px;
-    outline:none;
+input {
+    border-radius: 10px;
+    border: 0px;
+    width: 200px;
+    outline: none;
 }
-section{
-    margin-top:40px;
+section {
+    margin-top: 40px;
 }
-
-
 
 /* 헤더 */
-#header{
+#header {
     width: 100%;
     height: 80px;
+    background-color: var(--color-black);
+}
+
+body.light-mode #header {
+    background-color: var(--color-white);
 }
 
 #header .container {
@@ -73,32 +77,54 @@ section{
     align-items: center;
     justify-content: space-between;
     max-width: 1240px;
-    width :100%;
+    width: 100%;
     height: 100%;
     margin: 0 auto;
 }
 
 .header__inner h1 a {
-  font-size: var(--font-md);
-  color: var(--color-accent);
-  font-weight: 700;
+    font-size: var(--font-md);
+    color: var(--color-accent);
+    font-weight: 700;
 }
-.input-search{
-    width:75%;
+.input-search {
+    width: 75%;
     height: 50px;
-    color:white;
-}
-.header__inner .button_wrap {
-    display: flex;
-    gap: 40px;
+    color: white;
 }
 
-.search__wrap #search{
+.header__inner .button_wrap {
+    display: flex;
+    position: relative;
+    width: 160px;
+    height: 100%;
+}
+
+body.light-mode .search {
+    fill: #010101;
+}
+.button_wrap button {
+    display: flex;
+    align-items: center;
+    padding: 26px;
+    transition: opacity 0.15s;
+}
+.button_wrap .button-darkmode {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.button_wrap .button-lightmode {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+}
+.search__wrap #search {
     background-color: var(--color-primary-light);
     width: 100%;
     height: 80px;
 }
-
 
 .search__wrap {
     position: relative;
@@ -109,34 +135,35 @@ section{
 .search__wrap input {
     width: 100%;
     height: 100%;
-    padding: 0 40px; 
+    padding: 0 40px;
     border: none;
-    outline: none; 
-    background: none; 
-    box-shadow: none; 
-    font-size:  20px;
-  }
-  .button__close {
+    outline: none;
+    background: none;
+    box-shadow: none;
+    font-size: 20px;
+}
+.button__close {
     position: absolute;
     top: 0;
     right: 16px;
     padding: 24px;
-  }
+}
 /* 섹션1 */
 .banner {
     display: flex;
     align-items: center;
     width: 100%;
     height: 560px;
-    background: linear-gradient(to bottom, transparent 0%, black 100%) url("https://image.tmdb.org/t/p/w500/I1fkNd5CeJGv56mhrTDoOeMc2r.jpg") no-repeat ;
+    background: linear-gradient(to bottom, transparent 0%, black 100%)
+        url("https://image.tmdb.org/t/p/w500/I1fkNd5CeJGv56mhrTDoOeMc2r.jpg") no-repeat;
     background-size: 50%;
     background-position: center right;
 }
 
-.card__detail{
+.card__detail {
     display: flex;
     justify-content: center;
-    padding: 0px calc(var(--space-padding) * 10) ;
+    padding: 0px calc(var(--space-padding) * 10);
 }
 .detail__left .mini-title {
     margin-bottom: 20px;
@@ -145,25 +172,23 @@ section{
     font-weight: 400;
 }
 .detail__left,
-.detail__right{
-    flex:1;
-   
+.detail__right {
+    flex: 1;
 }
 
-.detail__left{
+.detail__left {
     display: flex;
     flex-direction: column;
-    gap:calc( var(--space-padding) * 2 )
+    gap: calc(var(--space-padding) * 2);
 }
-.detail__right{
+.detail__right {
     display: flex;
     justify-content: center;
 }
 
-
-.detail__title{
-    color:var(--color-white);
-    font-size:var(--font-lg)
+.detail__title {
+    color: var(--color-white);
+    font-size: var(--font-lg);
 }
 
 .stars {
@@ -178,24 +203,23 @@ section{
 
 .overview {
     margin-bottom: 40px;
-    color: #AAA;
+    color: #aaa;
     font-size: 16px;
     font-weight: 400;
     line-height: 24px; /* 150% */
 }
 
-.detail__button{
-    width:150px;
-    height:40px;
+.detail__button {
+    width: 150px;
+    height: 40px;
     background-color: var(--color-accent);
 }
 
-
 /* 섹션2 */
 
-#movie_info{
-    width:100%;
-    gap:10px;
+#movie_info {
+    width: 100%;
+    gap: 10px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     /* gap: 0px 0px; */
@@ -203,68 +227,60 @@ section{
 
     grid-auto-rows: minmax(100px, auto);
     /* width:100%; */
-
 }
 
-.whole-movies  {
-    color:var(--color-white);
+.whole-movies {
+    color: var(--color-white);
 }
-#movie_info h3{
-    color:var(--color-white);
+#movie_info h3 {
+    color: var(--color-white);
 }
-#movie_info h3, p{
-    padding:5px;
-    
+#movie_info h3,
+p {
+    padding: 5px;
 }
 
-#movie_info img{
-    border:0px;
-    border-radius:5px;
-    width:100%;
-    height:340px;
-    margin:0px auto;
+#movie_info img {
+    border: 0px;
+    border-radius: 5px;
+    width: 100%;
+    height: 340px;
+    margin: 0px auto;
 }
 
 /* 스크롤 탑 */
-.top__btn{
-    position:fixed;
-    right:30px;
-    bottom:30px;
-    border:none;
+.top__btn {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    border: none;
     outline: none;
-    background-color:var(--color-accent);
-    border-radius:50%;
-    width:50px;
-    height:50px;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
     text-align: center;
 }
 
 .top__btn path {
-    fill:var(--color-white);
+    fill: var(--color-white);
 }
 
 /* 푸터 */
-footer{
+footer {
     max-width: 1280px;
-    margin: 0px auto ;
+    margin: 0px auto;
     padding: 50px 0px;
-    text-align: center;   
-  }
-
-
-
-
-
-
-@media(max-width:560px){
-    #movie_info{
-    display: block;  
-    /*500px 보다 작을 때 grid 에서 block 으로*/
-    }
-    #movie_info div{
-        padding:5px;
-        margin:10px;
-    }
-   
+    text-align: center;
 }
 
+@media (max-width: 560px) {
+    #movie_info {
+        display: block;
+        /*500px 보다 작을 때 grid 에서 block 으로*/
+    }
+    #movie_info div {
+        padding: 5px;
+        margin: 10px;
+    }
+}
