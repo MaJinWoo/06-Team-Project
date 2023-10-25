@@ -125,7 +125,7 @@ function onsubmitSearch(e) {
     }
     if (hasSpecialWord) {
         // 만약 사용할수없는 특문사용시 아래의 경고를 리턴하고 종료합니다.
-        return alert(`사용하실 수 없는 특수문자${specialWord} 를 사용하셨습니다. 입니다.`);
+        return alert(`사용하실 수 없는 특수문자${specialWord} 를 사용하셨습니다.`);
     }
 
     // 이제 인풋은 허가되지않은 특수문자나 빈문자열의 입력이 불가능해진 상태입니다.
