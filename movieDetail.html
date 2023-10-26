@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOVIES</title>
-    <link rel="stylesheet" href="mymoviesite.css">
+    <title>Movie detail</title>
+    <link rel="stylesheet" href="detailstyle.css">
 </head>
 
 <body>
+
     <!-- 헤드 fixed헤더 + 검색창 -->
     <header id="header">
         <div class="container">
@@ -18,7 +19,7 @@
                     <button class='button-search'>
                         <span class="hidden">검색</span>
                         <svg width="28" height="28" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                            <path class="search" fill="#ffffff"
+                            <path fill="#ffffff"
                                 d="m29 27.586l-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9a9.01 9.01 0 0 1-9-9Z" />
                         </svg>
                     </button>
@@ -28,61 +29,19 @@
                             <path fill="#ffffff"
                                 d="M233.54 142.23a8 8 0 0 0-8-2a88.08 88.08 0 0 1-109.8-109.8a8 8 0 0 0-10-10a104.84 104.84 0 0 0-52.91 37A104 104 0 0 0 136 224a103.09 103.09 0 0 0 62.52-20.88a104.84 104.84 0 0 0 37-52.91a8 8 0 0 0-1.98-7.98Zm-44.64 48.11A88 88 0 0 1 65.66 67.11a89 89 0 0 1 31.4-26A106 106 0 0 0 96 56a104.11 104.11 0 0 0 104 104a106 106 0 0 0 14.92-1.06a89 89 0 0 1-26.02 31.4Z" />
                         </svg>
-                    </button>
-                    <button class="button-lightmode">
-                        <span class="hidden">라이트모드</span>
                         <svg width="28" height="28" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
-                            <path fill="#010101"
+                            <path fill="#ffffff"
                                 d="M120 40V16a8 8 0 0 1 16 0v24a8 8 0 0 1-16 0Zm72 88a64 64 0 1 1-64-64a64.07 64.07 0 0 1 64 64Zm-16 0a48 48 0 1 0-48 48a48.05 48.05 0 0 0 48-48ZM58.34 69.66a8 8 0 0 0 11.32-11.32l-16-16a8 8 0 0 0-11.32 11.32Zm0 116.68l-16 16a8 8 0 0 0 11.32 11.32l16-16a8 8 0 0 0-11.32-11.32ZM192 72a8 8 0 0 0 5.66-2.34l16-16a8 8 0 0 0-11.32-11.32l-16 16A8 8 0 0 0 192 72Zm5.66 114.34a8 8 0 0 0-11.32 11.32l16 16a8 8 0 0 0 11.32-11.32ZM48 128a8 8 0 0 0-8-8H16a8 8 0 0 0 0 16h24a8 8 0 0 0 8-8Zm80 80a8 8 0 0 0-8 8v24a8 8 0 0 0 16 0v-24a8 8 0 0 0-8-8Zm112-88h-24a8 8 0 0 0 0 16h24a8 8 0 0 0 0-16Z" />
                         </svg>
                     </button>
                 </div>
             </div>
         </div>
-
-        <!-- 검색 폼 -->
-        <div class="search__wrap">
-            <form id="search">
-                <input name="input-search" class='input-search' type="text" placeholder="찾고 싶은 영화 제목을 검색해 보세요!">
-                <button class="button__close">
-                    <span class="hidden">검색창 닫기</span>
-                    <svg width="28" height="28" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#ffffff"
-                            d="M205.66 194.34a8 8 0 0 1-11.32 11.32L128 139.31l-66.34 66.35a8 8 0 0 1-11.32-11.32L116.69 128L50.34 61.66a8 8 0 0 1 11.32-11.32L128 116.69l66.34-66.35a8 8 0 0 1 11.32 11.32L139.31 128Z" />
-                    </svg>
-                </button>
-            </form>
-        </div>
     </header>
 
 
-
-    <div class="container">
-        <!-- 섹션1 미리보기 카드 -->
-        <section class="banner">
-          
-        </section>
-
-        <!-- 섹션2 전체영화 -->
-        <section>
-            <h1 class="whole-movies">전체 영화</h1>
-            <div class="movie__card" id="movie_info"></div>
-        </section>
-
-        <!-- 위로 올라가는 화살표 -->
-        <aside>
-            <button class="top__btn">
-                <svg width="24" height="24" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M205.66 117.66a8 8 0 0 1-11.32 0L136 59.31V216a8 8 0 0 1-16 0V59.31l-58.34 58.35a8 8 0 0 1-11.32-11.32l72-72a8 8 0 0 1 11.32 0l72 72a8 8 0 0 1 0 11.32Z" />
-                </svg>
-            </button>
-        </aside>
-    </div>
-    <!-- 푸터 카피라이트 -->
-    <footer>@ Copyright 2023 MOVIES</footer>
-
-    <script src="mymoviesite.js"></script>
+    <div class="movie__detail"></div>
+    <script src="review.js"></script>
 </body>
 
 </html>
