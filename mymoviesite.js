@@ -85,7 +85,7 @@ function moviebanner() {
     const randomNumber = Math.floor(Math.random() * 20);
     newMovie = movieLists[randomNumber];
     newBackgroundImage = newMovie.backdrop_path;
-    banner.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${newBackgroundImage}'), linear-gradient(to right, #000000, rgba(0,0,0,0.9), rgba(0,0,0,0))`;
+    banner.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${newBackgroundImage}'), linear-gradient(to right, #000000, rgba(0,0,0,1), rgba(0,0,0,0))`;
 
     const stars = makeStars(newMovie.vote_average);
 
