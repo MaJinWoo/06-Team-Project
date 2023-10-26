@@ -144,6 +144,25 @@ function saveMovieLocal() {
 // form의 submit시 input의 값에 이상이 있는지 확인하기위해 form의 이벤트리스너를 달아주었다.
 $formSearch.addEventListener('submit', onsubmitSearch);
 
+
+// ---- 진우 : 검색기능 추가 ---
+$formSearch.addEventListener('submit', search);
+
+
+function search() {
+        const moviecard = document.getElementById('movie_info');
+        moviecard.innerHTML = ''; 
+        inputValue = $inputSearch.value.toUpperCase();
+        let filteredMovies = movieLists.filter((movie) => 
+        (movie.title.toUpperCase().includes(inputValue)
+        || movie.original_title.toUpperCase().includes(inputValue)));
+        filteredMovies.forEach((result) => {
+            movieCard(result);
+        });
+        console.log(filteredMovies.title);
+}
+// ----------------------------------
+
 //from이 submit시 실행될 함수 정의
 function onsubmitSearch(e) {
   // submit이벤트 사용시 주의점 * 서브밋 시 기본동작으로 페이지가 새로고침됩니다.
@@ -178,6 +197,7 @@ function onsubmitSearch(e) {
     // 만약인풋이 비어있다면 함수는 아래의 경고를 리턴하고 종료합니다.
     return alert('빈 문자열은 입력하실 수 없어요');
   }
+ 
   if (hasSpecialWord) {
     // 만약 사용할수없는 특문사용시 아래의 경고를 리턴하고 종료합니다.
     return alert(`사용하실 수 없는 특수문자${specialWord} 를 사용하셨습니다.`);
