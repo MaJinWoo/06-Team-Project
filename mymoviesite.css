@@ -32,7 +32,6 @@
     --color-black: #ffffff;
     --color-light-gray: #555555;
     --color-white: #010101;
-    /* background-color: var(--color-white); */
 }
 
 html:not(.light-mode) {
@@ -187,11 +186,10 @@ section {
     width: 100%;
     height: 560px;
     margin: 0;
-    background: linear-gradient(to right, rgb(255 255 255), rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0));
     background-size: 100%;
     background-position: center right;
     background-blend-mode: color;
-    transition: all 0.5s;
+    transition: all 0.2s;
 }
 
 .card__detail {
@@ -250,7 +248,7 @@ section {
     height: 40px;
     background-color: var(--color-accent);
     text-align: center;
-    color: var(--color-white);
+    color: #ffffff;
 }
 
 /* 섹션2 */
