@@ -38,6 +38,9 @@ html:not(.light-mode) {
     background-color: var(--color-primary);
 }
 
+.light-mode .button-search-open svg path {
+    fill: var(--color-white);
+}
 .light-mode .button-search svg path {
     fill: var(--color-white);
 }
@@ -173,7 +176,7 @@ section {
     box-shadow: none;
     font-size: 20px;
 }
-.button__close {
+.search__wrap .button-search {
     position: absolute;
     top: 0;
     right: 16px;

@@ -276,7 +276,7 @@ lightButton.addEventListener("click", function () {
 });
 
 //search 버튼 클릭 시 노출
-const searchButton = document.querySelector(".button-search");
+const searchButton = document.querySelector(".button-search-open");
 const searchForm = document.querySelector("#search");
 searchButton.addEventListener("click", function () {
     searchForm.classList.contains("hide") ? searchForm.classList.remove("hide") : searchForm.classList.add("hide");
