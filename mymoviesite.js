@@ -17,29 +17,28 @@ const options = {
 window.onload = init;
 
 
-async function  init(){
+async function init() {
   await fetch('https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=1', options)
-  .then(response => response.json())
-  .then(data => {
-    movieLists = data.results;
-    movieLists.forEach((result) => {
-      movieCard(result);
+    .then(response => response.json())
+    .then(data => {
+      movieLists = data.results;
+      movieLists.forEach((result) => {
+        movieCard(result);
+      });
 
-    });
-    // *** 진우 : local staorage에 영화 정보 저장
-    saveMovieLocal();
-  })
-  .catch(err => console.error(err));
-  
+      // *** 진우 : local staorage에 영화 정보 저장
+      saveMovieLocal();
+    })
+    .catch(err => console.error(err));
+
   moviebanner();
-  
+
 }
 
 // *** 진우 : 카드 클릭하면 id가 local storage에 저장
 function cardClick(id) {
   window.localStorage.setItem("clickedID", id);
   window.location.href = "movieDetail.html";
-
 }
 
 
@@ -75,22 +74,22 @@ function movieCard(movie) {
 
 
   // 카드 누르면 id 뜬다.
-  
   card.addEventListener('click', () => cardClick(id));
 
-  }
+}
+
 
 
 // -----섹션 1 미리보기 카드 
 
 function moviebanner() {
-  const randomNumber = Math.floor(Math.random()*20);
+  const randomNumber = Math.floor(Math.random() * 20);
   const newMovie = movieLists[randomNumber];
   const newBackgroundImage = newMovie.backdrop_path;
   banner.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${newBackgroundImage}'), linear-gradient(to right, #000000, rgba(0,0,0,0.9), rgba(0,0,0,0))`;
 
-  banner.innerHTML=
-  ` <div class="card__detail">
+  banner.innerHTML =
+    ` <div class="card__detail">
   <div class="detail__left">
       <h3 class="mini-title">${newMovie.original_title}</h3>
       <h2 class="detail__title">${newMovie.title}</h2>
@@ -123,11 +122,11 @@ function moviebanner() {
       <img width="268" height="382" src="https://image.tmdb.org/t/p/w500/${newMovie.poster_path}">
   </div>  
 </div>`;
-//디테일 버튼을 클릭하면 상세 페이지로 이동
-const detail__btn = document.querySelector('.detail__button');
-detail__btn.addEventListener('click',() => {
-  cardClick(newMovie.id)
-});
+  //디테일 버튼을 클릭하면 상세 페이지로 이동
+  const detail__btn = document.querySelector('.detail__button');
+  detail__btn.addEventListener('click', () => {
+    cardClick(newMovie.id)
+  });
 }
 // 1. 카드를 가져온다
 // 2. 실제 데이터를 넣어준다
@@ -139,7 +138,7 @@ detail__btn.addEventListener('click',() => {
 
 // *** 진우 : movie에 영화정보 저장
 function saveMovieLocal() {
-  window.localStorage.setItem("movie", JSON.stringify(movieLists));
+  window.localStorage.setItem("movie", JSON.stringify(movieLists))
 }
 
 
@@ -148,7 +147,7 @@ function saveMovieLocal() {
 
 
 // form의 submit시 input의 값에 이상이 있는지 확인하기위해 form의 이벤트리스너를 달아주었다.
-// $formSearch.addEventListener('submit', onsubmitSearch);
+//$formSearch.addEventListener('submit', onsubmitSearch);
 
 
 // ---- 진우 : 검색기능 추가 ---
@@ -156,23 +155,23 @@ $formSearch.addEventListener('submit', search);
 
 
 function search(e) {
-        e.preventDefault(); //기본동작 정지
-        const inputValue = $inputSearch.value.toUpperCase();
-        const filterdValue= filterValueFn(inputValue)
+  e.preventDefault(); //기본동작 정지
+  const inputValue = $inputSearch.value.toUpperCase();
+  const filterdValue = filterValueFn(inputValue)
 
-        console.log(filterdValue)
-        if(filterdValue){
-        const moviecard = document.getElementById('movie_info');
-        moviecard.innerHTML = ''; 
-        let filteredMovies = movieLists.filter((movie) => 
-        (movie.title.includes(inputValue)
-        || movie.original_title.toUpperCase().includes(inputValue)));
-        filteredMovies.forEach((result) => {
-            movieCard(result);
-        });
-      }
-      return
-        
+  console.log(filterdValue)
+  if (filterdValue) {
+    const moviecard = document.getElementById('movie_info');
+    moviecard.innerHTML = '';
+    let filteredMovies = movieLists.filter((movie) =>
+    (movie.title.includes(inputValue)
+      || movie.original_title.toUpperCase().includes(inputValue)));
+    filteredMovies.forEach((result) => {
+      movieCard(result);
+    });
+  }
+  return
+
 }
 // ----------------------------------
 
@@ -210,12 +209,12 @@ function filterValueFn(inputValue) {
     alert('빈 문자열은 입력하실 수 없어요');
     return false
   }
- 
+
   if (hasSpecialWord) {
     // 만약 사용할수없는 특문사용시 아래의 경고를 리턴하고 종료합니다.
     alert(`사용하실 수 없는 특수문자${specialWord} 를 사용하셨습니다.`);
     return false
-  } 
+  }
 
   return true
 
@@ -262,21 +261,22 @@ darkButton.addEventListener("click", function () {
   this.style.zIndex = "0";
   lightButton.style.opacity = "1";
   lightButton.style.zIndex = "1";
-  document.documentElement.classList.add("light-mode");
+  document.body.classList.add("light-mode");
 });
 lightButton.addEventListener("click", function () {
   this.style.opacity = "0";
   this.style.zIndex = "0";
   darkButton.style.opacity = "1";
   darkButton.style.zIndex = "1";
-  document.documentElement.classList.remove("light-mode");
+  document.body.classList.remove("light-mode");
 });
+
 
 //search 버튼 클릭 시 노출
 const searchButton = document.querySelector('.button-search');
 const searchForm = document.querySelector('#search');
 searchButton.addEventListener("click", function () {
-    searchForm.classList.contains("hide")
-        ? searchForm.classList.remove("hide")
-        : searchForm.classList.add("hide");
+  searchForm.classList.contains("hide")
+    ? searchForm.classList.remove("hide")
+    : searchForm.classList.add("hide");
 });
