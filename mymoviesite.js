@@ -1,6 +1,11 @@
 let movieLists = []; // 맨 처음에 로딩될 때 가져온 영화 데이터를 담는 변수
 const button = document.getElementById("search-button");
 const input = document.getElementById("search-input");
+const $inputSearch = document.querySelector('.input-search');
+const $formSearch = document.getElementById('search');
+const banner = document.querySelector('.banner');
+const scrollToTopButton = document.querySelector(".top__btn");
+
 const options = {
   method: "GET",
   headers: {
@@ -10,8 +15,8 @@ const options = {
   },
 };
 
-
 window.onload = init;
+
 
 async function  init(){
   await fetch('https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=1', options)
@@ -81,7 +86,6 @@ function movieCard(movie) {
 // 섹션 1 미리보기 카드 
 // 1. 카드를 가져온다
 function moviebanner() {
-  const banner = document.querySelector('.banner');
   const randomNumber = Math.floor(Math.random()*20);
   const newMovie = movieLists[randomNumber];
 
@@ -135,8 +139,7 @@ function saveMovieLocal() {
 
 // branch chul주석
 // dom의 input요소 및 from요소 선택!
-const $inputSearch = document.querySelector('.input-search');
-const $formSearch = document.getElementById('search');
+
 
 // form의 submit시 input의 값에 이상이 있는지 확인하기위해 form의 이벤트리스너를 달아주었다.
 $formSearch.addEventListener('submit', onsubmitSearch);
@@ -189,7 +192,6 @@ function onsubmitSearch(e) {
 // 지연_______________________________________________________________________
 // scroll 했을 때 fixed header
 // scrollToTop
-const scrollToTopButton = document.querySelector(".top__btn");
 window.addEventListener("scroll", function () {
   const header = document.querySelector("#header");
   let windowTop = window.scrollY;
