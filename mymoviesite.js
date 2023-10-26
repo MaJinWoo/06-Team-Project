@@ -5,10 +5,6 @@ const $formSearch = document.getElementById('search');
 const banner = document.querySelector('.banner');
 const scrollToTopButton = document.querySelector('.top__btn');
 
-// 테스트용
-const $sectionTest = document.getElementById('section-test');
-const $starBox = document.querySelector('.star__box');
-
 const options = {
     method: 'GET',
     headers: {
@@ -285,9 +281,9 @@ function makeStars(average) {
 // html은 박스 및에 5개의 빈 별이 들어가있는 상태입니다.
 // 박스에 클릭 이벤트 리스너를 달아줍니다.
 // 문제점 svg요소를 클릭시 정상 작동하나 path부분을 클릭시 버그 발생..
-$starBox.addEventListener('click', modifyStars);
+// $starBox.addEventListener('click', modifyStars);
 
-function modifyStars(e) {
+function modifyStars(e, box) {
     if (e.target.tagName === 'DIV') {
         // 주의 tagName 'div'인데 이상하게 DIV로 나옴..
         console.log('함수종료');
@@ -299,7 +295,7 @@ function modifyStars(e) {
         target = e.target.parentElement; // path 요소를 클릭했을 때 버그수정을 위해 부모인 svg 요소를 대상으로 변경
     }
 
-    const parentNodeList = Array.from($starBox.children); // 해당변수는 별을 담고있는 박스의 자식요소들을 가져옵니다.
+    const parentNodeList = Array.from(box.children); // 해당변수는 별을 담고있는 박스의 자식요소들을 가져옵니다.
     // html요소들은 htmlcollection이라는 요소로 배열처럼 생겼지만 배열이 아닙니다.
     // 그러므로 Array.from()안에 담아서 배열로 바꿔줍니다.(배열 메소드 사용하기 위해)
 
