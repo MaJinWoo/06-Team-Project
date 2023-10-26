@@ -14,7 +14,7 @@
     <header id="header">
         <div class="container">
             <div class="header__inner">
-                <h1><a href="#">MOVIES</a></h1>
+                <h1 class="header__home"><a href="#">MOVIES</a></h1>
                 <div class="button_wrap">
                     <button class='button-search'>
                         <span class="hidden">검색</span>
@@ -39,9 +39,63 @@
         </div>
     </header>
 
+    <div class="container">
+    <!-- 디테일 -->
+    <section class="banner"></section>
+    
+    <!-- 리뷰박스 -->
+    <section id="review">
+        <div class ="review__container">
+            <p class ="write__review">리뷰 작성</span>
+            <p class="entire__review">전체 리뷰</span>
+      </div>
+    <form class ="review__form">
+        <textarea  class="review__text" placeholder="이 영화의 리뷰를 작성해 주세요!"></textarea>
+        <input class = "review__nickname" type="text" placeholder="이름">
+        <input class = "review__password" type="text" placeholder="확인 비밀번호"/>
+        <button class="register__btn">리뷰 등록하기</button>
+    </form>
 
-    <div class="movie__detail"></div>
-    <script src="review.js"></script>
+    <div class="review__list">
+        <h1 class="review__title">전체 리뷰</h1>
+
+        <div class="review__card">
+            <div class="card-wrapper" >
+                <div class="review__stars">
+                    별별별별별
+                </div>
+                <div class="review__date">
+                   작성일
+                </div>
+            </div>
+            <p>리뷰내용</p>
+            <span>작성자</span>
+            <span style="display: block;"> 따봉</span>
+        </div>
+
+        <div class="review__card">
+            <div class="card-wrapper" >
+                <div class="review__stars">
+                    별별별별별
+                </div>
+                <div class="review__date">
+                   작성일
+                </div>
+            </div>
+            <p>리뷰내용</p>
+            <span>작성자</span>
+            <span style="display: block;"> 따봉</span>
+        </div>
+
+    </div>
+   
+    </section>
+</div>
+     <!-- 푸터 -->
+     <footer>@ Copyright 2023 MOVIES</footer>
+
+    
+   <script src="review.js"></script>
 </body>
 
 </html>
