@@ -5,10 +5,6 @@ const $formSearch = document.getElementById('search');
 const banner = document.querySelector('.banner');
 const scrollToTopButton = document.querySelector('.top__btn');
 
-// 테스트용
-const $sectionTest = document.getElementById('section-test');
-const $starBox = document.querySelector('.star__box');
-
 const options = {
     method: 'GET',
     headers: {
@@ -285,25 +281,30 @@ function makeStars(average) {
 // html은 박스 및에 5개의 빈 별이 들어가있는 상태입니다.
 // 박스에 클릭 이벤트 리스너를 달아줍니다.
 // 문제점 svg요소를 클릭시 정상 작동하나 path부분을 클릭시 버그 발생..
-$starBox.addEventListener('click', modifyStars);
+// $starBox.addEventListener('click', modifyStars);
 
-function modifyStars(e) {
+function modifyStars(e, box) {
+    if (e.target.tagName === 'DIV') {
+        // 주의 tagName 'div'인데 이상하게 DIV로 나옴..
+        console.log('함수종료');
+        return;
+    } // div같은거 가끔 눌려서 그때마다 버그걸리는거 수정을 위해 조건 추가.
+
+    let target = e.target;
     if (e.target.tagName === 'path') {
-        e.target = e.target.parentElement; // path 요소를 클릭했을 때 버그수정을 위해 부모인 svg 요소를 대상으로 변경
+        target = e.target.parentElement; // path 요소를 클릭했을 때 버그수정을 위해 부모인 svg 요소를 대상으로 변경
     }
-    if (e.target.tagName !== 'svg') return; // div같은거 가끔 눌려서 그때마다 버그걸리는거 수정을 위해 조건 추가.
 
-    const parentNodeList = Array.from($starBox.children); // 해당변수는 별을 담고있는 박스의 자식요소들을 가져옵니다.
+    const parentNodeList = Array.from(box.children); // 해당변수는 별을 담고있는 박스의 자식요소들을 가져옵니다.
     // html요소들은 htmlcollection이라는 요소로 배열처럼 생겼지만 배열이 아닙니다.
     // 그러므로 Array.from()안에 담아서 배열로 바꿔줍니다.(배열 메소드 사용하기 위해)
 
-    const printIndex = parentNodeList.indexOf(e.target); //indexOf라는 배열메소드를 사용하여 지금 클릭한 타겟이 몇번째 요소인지 찾습니다.
+    const printIndex = parentNodeList.indexOf(target); //indexOf라는 배열메소드를 사용하여 지금 클릭한 타겟이 몇번째 요소인지 찾습니다.
     //e라는건 이벤트로 e.target은 현재 이벤트가 일어난(클릭된 녀석)녀석입니다.
 
     // 박스가 가진 별의 수만 큼 반복하는 함수를 실행하여 인덱스가 프린트인덱스보다 작거나 같으면 채워진 별을 innerHtml로 덮어주고
     // 아닌경우 빈별을 innerHtml로 덮어줍니다.
     parentNodeList.forEach((children, index) => {
-        console.log(parentNodeList[index]);
         if (index <= printIndex) {
             parentNodeList[index].innerHTML = `
                                               

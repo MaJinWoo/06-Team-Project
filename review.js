@@ -79,9 +79,12 @@ function getDetail() {
 // 저장을 클릭하면 리뷰를 저장하도록 하는 이벤트 만들기.
 // 저장된 리뷰를 
 
-const review_form = document.querySelector('.review_form');
+const review__text = document.getElementsByClassName('.review__text');
+const review__nickname = document.getElementsByClassName('.review__nickname');
+const review__password = document.getElementsByClassName('.review__password');
+const register__btn = document.getElementsByClassName('.revieregister__btnw_list');
 const review_list = document.getElementsByClassName('.review_list');
-console.log(review_form)
+
 
 // document.getElementsByClassName{}
 // window.onload = function() {
