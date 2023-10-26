@@ -13,15 +13,16 @@ const reviewText = document.querySelector('.review__text');
 let reviews = [];
 
 function showReviews() {
+    //기존에 리뷰가 없으면 전체리뷰를 보여주지 않음
     if (!reviews) return;
     reviews = JSON.parse(localStorage.getItem('reviews'));
 
-    //로컬 스토리지에 저장된 리뷰들을 불러와야 하는데 
+    //로컬 스토리지에 저장된 리뷰들을 불러옴
     reviews.forEach(review => {
         const getReview = createReview(review.nickname, review.text);
         reviewList.appendChild(getReview);
     })
-    console.log('전체 리뷰 불러야지');
+
 
 }
 
@@ -34,7 +35,7 @@ function createReview(name, comment) {
                                     별별별별별
                                 </div>
                             <div class="review__date">
-                                작성일
+                            ${new Date().toLocaleDateString()}
                             </div>
                         </div>
                         <p>${comment}</p>
