@@ -42,7 +42,7 @@
 
         <!-- 검색 폼 -->
         <div class="search__wrap">
-            <form id="search">
+            <form id="search" class="hide">
                 <input name="input-search" class='input-search' type="text" placeholder="찾고 싶은 영화 제목을 검색해 보세요!">
                 <button class="button__close">
                     <span class="hidden">검색창 닫기</span>
@@ -60,54 +60,12 @@
     <div class="container">
         <!-- 섹션1 미리보기 카드 -->
         <section class="banner">
-            <div class="card__detail">
-                <div class="detail__left">
-                    <h3 class="mini-title">The Godfather</h3>
-                    <h2 class="detail__title">대부</h2>
-                    <div class="detail__info-box">
-                        <div class="stars">
-                            <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path fill="#ed3124"
-                                    d="m5.825 22l1.625-7.025L2 10.25l7.2-.625L12 3l2.8 6.625l7.2.625l-5.45 4.725L18.175 22L12 18.275L5.825 22Z" />
-                            </svg>
-                            <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path fill="#ed3124"
-                                    d="m5.825 22l1.625-7.025L2 10.25l7.2-.625L12 3l2.8 6.625l7.2.625l-5.45 4.725L18.175 22L12 18.275L5.825 22Z" />
-                            </svg>
-                            <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path fill="#ed3124"
-                                    d="m5.825 22l1.625-7.025L2 10.25l7.2-.625L12 3l2.8 6.625l7.2.625l-5.45 4.725L18.175 22L12 18.275L5.825 22Z" />
-                            </svg>
-                            <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path fill="#ed3124"
-                                    d="m5.825 22l1.625-7.025L2 10.25l7.2-.625L12 3l2.8 6.625l7.2.625l-5.45 4.725L18.175 22L12 18.275L5.825 22Z" />
-                            </svg>
-                            <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path fill="#ed3124"
-                                    d="m8.85 17.825l3.15-1.9l3.15 1.925l-.825-3.6l2.775-2.4l-3.65-.325l-1.45-3.4l-1.45 3.375l-3.65.325l2.775 2.425l-.825 3.575ZM5.825 22l1.625-7.025L2 10.25l7.2-.625L12 3l2.8 6.625l7.2.625l-5.45 4.725L18.175 22L12 18.275L5.825 22ZM12 13.25Z" />
-                            </svg>
-                            <span class="average">8.7</span>
-                        </div>
-                        <p class="overview">"시실리에서 이민온 뒤, 정치권까지 영향력을 미치는 거물로 자리잡은 돈 꼴레오네는 갖가지 고민을 호소하는 사람들의 문제를 해결해주며
-                            대부라 불리운다. 한편 솔로소라는 인물은 꼴레오네가와 라이벌인 탓타리아 패밀리와 손잡고 새로운 마약 사업을 제안한다. 돈 꼴레오네가 마약 사업에 참여하지 않기로
-                            하자, 돈 꼴레오네를 저격해 그는 중상을 입고 사경을 헤매게 된다. 그 뒤, 돈 꼴레오네의 아들 소니는 조직력을 총 동원해 다른 패밀리들과 피를 부르는 전쟁을
-                            시작하는데... 가족의 사업과 상관없이 대학에 진학한 뒤 인텔리로 지내왔던 막내 아들 마이클은 아버지가 총격을 당한 뒤, 아버지를 구하기 위해 위험천만한 협상 자리에
-                            나선다."</p>
-                    </div>
-                    <button class="detail__button">
-                        버튼
-                    </button>
-                </div>
-                <div class="detail__right">
-                    <img width="268" height="382" src="https://image.tmdb.org/t/p/w500/I1fkNd5CeJGv56mhrTDoOeMc2r.jpg">
-                </div>
-
-            </div>
+          
         </section>
 
         <!-- 섹션2 전체영화 -->
         <section>
-            <h1 class="whole-movies">전체 영화</h1>
+            <h2 class="whole-movies">전체 영화</h2>
             <div class="movie__card" id="movie_info"></div>
         </section>
 

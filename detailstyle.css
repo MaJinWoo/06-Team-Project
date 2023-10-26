@@ -1,87 +1,58 @@
-:root {
-    --color-primary: #010101;
-    --color-primary-light: #222222;
-    --color-accent: #ED3124;
-    --color-text: var(--color-black);
-
-    /*  */
-    --color-white: #ffffff;
-    --color-light-gray: #aaaaaa;
-    --color-black: #010101;
-
-    /* 공백 */
-    --space-padding: 4px;
-    --space-margin: 4px;
-
-    /* 폰트사이즈 */
-    --font-lg: 32px;
-    --font-md: 20px;
-    --font-smd: 16px;
-    --font-sm: 14px;
-}
+@import url(mymoviesite.css);
 
 /* 공통 */
-body {
-    background-color: var(--color-primary);
-    color: var(--color-light-gray);
+textarea{
+    resize: none;
+    margin-bottom:30px;
 }
 
-/* 헤더 */
-#header {
-    width: 100%;
-    height: 80px;
+.review__container{
+   display: flex;
+   justify-content: center;
+   margin-bottom: calc(var(--space-margin)*5);
 }
 
-#header .container {
-    height: 100%;
-}
 
-.header__inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1240px;
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-}
-
-.header__inner h1 a {
-    font-size: var(--font-md);
-    color: var(--color-accent);
-    font-weight: 700;
-}
-
-.input-search {
-    width: 75%;
-    height: 50px;
-    color: white;
-}
-
-.header__inner .button_wrap {
-    display: flex;
-    gap: 40px;
-}
-
-.hidden {
-    display: none;
-}
-
-.movie__detail {
-    display: flex;
+/* 리뷰박스 => 닉네임, 비밀번호, 감상평*/
+.review__form{
+    display:flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 0px calc(var(--space-padding) * 10);
+    align-items: center;
+    gap:calc(var(--space-padding) * 2);
 }
 
-/* .detail__left .mini-title {
-    margin-bottom: 20px;
-    color: #777;
-    font-size: 16px;
-    font-weight: 400;
+.review__nickname,.review__password{
+    height: 35px;
+    width: 350px;
+}
+.review__text{
+    height: 150px;
+    width: 350px;
+
 }
 
-.detail__left,
-.detail__right {
-    flex: 1;
-} */
+.register__btn{
+    width:350px;
+    height:35px;
+    text-align: center;
+    background-color: var(--color-accent);
+    color:var(--color-white);
+}
+/* 리뷰 리스트 및 리뷰카드 */
+.review__list{
+    margin:0 auto;
+    max-width: 800px;
+    display:flex;
+    flex-direction: column;
+    gap:calc(var(--space-padding) * 2);
+    margin-top:calc(var(--space-margin) * 10);
+}
+
+.review__title{
+    font-size:var(--font-md)
+}
+
+.card-wrapper{
+    display:flex;
+    justify-content: space-between;
+}

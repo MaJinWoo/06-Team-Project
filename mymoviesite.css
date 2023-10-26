@@ -24,6 +24,11 @@
     --font-sm: 14px;
 }
 
+/* 라이트모드 변수선언 */
+.light-mode{
+
+}
+
 /* 공통 */
 body {
     background-color: var(--color-primary);
@@ -46,25 +51,27 @@ body.light-mode {
 
 button {
     border: 0px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 input {
-    border-radius: 10px;
+    /* border-radius: 10px; */
     border: 0px;
     width: 200px;
     outline: none;
 }
 section {
-    margin-top: 40px;
+    margin: 100px 0;
 }
 
 /* 헤더 */
 #header {
+    position: relative;
     width: 100%;
     height: 80px;
     background-color: var(--color-black);
-    transition: background 0.1s;
+    transition: all 0.1s;
+    z-index: 99;
 }
 
 body.light-mode #header {
@@ -72,7 +79,10 @@ body.light-mode #header {
 }
 
 #header .container {
+    position: relative;
     height: 100%;
+    background-color: var(--color-black);
+    z-index: 5;
 }
 .header__inner {
     display: flex;
@@ -100,6 +110,7 @@ body.light-mode #header {
     position: relative;
     width: 160px;
     height: 100%;
+    
 }
 
 body.light-mode .search {
@@ -126,6 +137,11 @@ body.light-mode .search {
     background-color: var(--color-primary-light);
     width: 100%;
     height: 80px;
+    transform: translateY(0);
+    transition: transform 0.2s;
+}
+.search__wrap #search.hide {    
+    transform: translateY(-100%);
 }
 
 .search__wrap {
@@ -156,16 +172,20 @@ body.light-mode .search {
     align-items: center;
     width: 100%;
     height: 560px;
-    background: linear-gradient(to bottom, transparent 0%, black 100%)
-        url("https://image.tmdb.org/t/p/w500/I1fkNd5CeJGv56mhrTDoOeMc2r.jpg") no-repeat;
-    background-size: 50%;
+    margin: 0;
+    /* background-color: rgba(0,0,0,0.85); */
+    background-image: linear-gradient(to right, rgba(0,0,0,0.85));
+    background-size: 100%;
     background-position: center right;
+    background-blend-mode: multiply;
 }
 
 .card__detail {
+    position: relative;
     display: flex;
     justify-content: center;
     padding: 0px calc(var(--space-padding) * 10);
+    z-index: 9;
 }
 .detail__left .mini-title {
     margin-bottom: 20px;
@@ -215,13 +235,15 @@ body.light-mode .search {
     width: 150px;
     height: 40px;
     background-color: var(--color-accent);
+    text-align: center;
+    color: var(--color-white);
 }
 
 /* 섹션2 */
 
 #movie_info {
     width: 100%;
-    gap: 10px;
+    gap: 50px 10px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     /* gap: 0px 0px; */
@@ -230,16 +252,23 @@ body.light-mode .search {
     grid-auto-rows: minmax(100px, auto);
     /* width:100%; */
 }
-
+#movie_info > div {
+    cursor: pointer;
+}
 .whole-movies {
+    margin-bottom: calc(var(--space-margin)*10);
+    font-size: 24px;
     color: var(--color-white);
 }
 #movie_info h3 {
+    margin-top: calc(var(--space-margin)*5);
+    font-size: 18px;
     color: var(--color-white);
 }
-#movie_info h3,
-p {
-    padding: 5px;
+#movie_info p {
+    margin: calc(var(--space-margin)*2) 0;
+    font-size: var(--font-sm);
+    color: var(--color-light-gray);
 }
 
 #movie_info img {
