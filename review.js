@@ -4,9 +4,71 @@ const movies = JSON.parse(localStorage.getItem('movie'));
 const id = localStorage.getItem('clickedID');
 /// 수정 메인페이지로 가는 버튼
 const goHomeBtn = document.querySelector('.header__home');
-goHomeBtn.addEventListener('click',goHome);
-function goHome(){
-    window.location.href = "mymoviesite.html";  
+const reviewForm = document.querySelector('.review__form');
+const reviewList = document.querySelector('.review__list');
+const reviewNickname = document.querySelector('.review__nickname');
+const reviewPassword = document.querySelector('.review__password');
+const reviewText = document.querySelector('.review__text');
+
+let reviews = [];
+
+function showReviews() {
+    if (!reviews) return;
+    reviews = JSON.parse(localStorage.getItem('reviews'));
+
+    //로컬 스토리지에 저장된 리뷰들을 불러와야 하는데 
+    reviews.forEach(review => {
+        const getReview = createReview(review.nickname, review.text);
+        reviewList.appendChild(getReview);
+    })
+    console.log('전체 리뷰 불러야지');
+
+}
+
+function createReview(name, comment) {
+    //전체 리뷰에 리뷰가 추가됨. 
+    const reviewCard = document.createElement('div');
+    reviewCard.setAttribute('class', 'review__card');
+    reviewCard.innerHTML = `<div class="card-wrapper">
+                                <div class="review__stars">
+                                    별별별별별
+                                </div>
+                            <div class="review__date">
+                                작성일
+                            </div>
+                        </div>
+                        <p>${comment}</p>
+                        <span>${name}</span>
+                        <span style="display: block;"> 따봉</span>
+                        </div>`;
+    return reviewCard;
+
+}
+
+function saveReviews() {
+    localStorage.setItem('reviews', JSON.stringify(reviews));
+}
+
+function addReview() {
+    const nickname = reviewNickname.value;
+    const password = reviewPassword.value;
+    const text = reviewText.value;
+    const newReview = createReview(nickname, text);
+    //리뷰 리스트에 입력한 리뷰 추가
+    reviewList.appendChild(newReview);
+    reviews.push({
+        nickname: nickname,
+        password: password,
+        text: text
+    });
+    saveReviews();
+    reviewNickname.value = '';
+    reviewPassword.value = '';
+    reviewText.value = '';
+}
+
+function goHome() {
+    window.location.href = "mymoviesite.html";
 }
 function getDetail() {
     const selectedMovie = movies.find(movie => movie.id == id);
@@ -47,7 +109,7 @@ function getDetail() {
 
     const score = document.createElement('span');
     score.setAttribute('class', 'average');
-    score.innerHTML =  `${vote_average}`;
+    score.innerHTML = `${vote_average}`;
     stars.appendChild(score);
 
     const content = document.createElement('p');
@@ -73,10 +135,12 @@ function getDetail() {
     detail__left.appendChild(content);
     ///
     detail__right.appendChild(img);
+    showReviews();
 
 
 }
 
+<<<<<<< HEAD
 window.addEventListener('load', getDetail);
 
 
@@ -188,3 +252,11 @@ $review__button.addEventListener('click',resetReviewForm);
 //     return true
   
 //   }
+=======
+reviewForm.addEventListener('submit', (e) => {
+    addReview();
+    e.preventDefault()
+});
+goHomeBtn.addEventListener('click', goHome);
+window.addEventListener('load', getDetail);
+>>>>>>> 7a3692bd0596a40b7ef30015d4e94d5623dd28cd

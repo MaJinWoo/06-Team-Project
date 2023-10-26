@@ -22,7 +22,6 @@ const options = {
 window.onload = init;
 
 async function init() {
-    // await fetch("https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=1", options);
     await fetch("https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=1", options)
         .then((response) => response.json())
         .then((data) => {
@@ -40,8 +39,6 @@ async function init() {
 
 // *** 진우 : 카드 클릭하면 id가 local storage에 저장
 function cardClick(id) {
-    window.localStorage.setItem("clickedID", id);
-    window.location.href = "movieDetail.html";
     window.localStorage.setItem("clickedID", id);
     window.location.href = "movieDetail.html";
 }
@@ -131,7 +128,7 @@ function saveMovieLocal() {
 // dom의 input요소 및 from요소 선택!
 
 // form의 submit시 input의 값에 이상이 있는지 확인하기위해 form의 이벤트리스너를 달아주었다.
-// $formSearch.addEventListener('submit', onsubmitSearch);
+//$formSearch.addEventListener('submit', onsubmitSearch);
 
 // ---- 진우 : 검색기능 추가 ---
 $formSearch.addEventListener("submit", search);

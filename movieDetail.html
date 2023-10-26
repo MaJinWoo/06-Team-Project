@@ -40,62 +40,53 @@
     </header>
 
     <div class="container">
-    <!-- 디테일 -->
-    <section class="banner"></section>
-    
-    <!-- 리뷰박스 -->
-    <section id="review">
-        <div class ="review__container">
-            <p class ="write__review">리뷰 작성</span>
-            <p class="entire__review">전체 리뷰</span>
-      </div>
-    <form class ="review__form">
-        <textarea  class="review__text" placeholder="이 영화의 리뷰를 작성해 주세요!"></textarea>
-        <input class = "review__nickname" type="text" placeholder="이름">
-        <input class = "review__password" type="text" placeholder="확인 비밀번호"/>
-        <button class= "register__btn">리뷰 등록하기</button>
-    </form>
 
     <div class="review__list">
         <h1 class="review__title">전체 리뷰</h1>
 
-        <!-- <div class="review__card">
-            <div class="card-wrapper" >
-                <div class="review__stars">
-                    별별별별별
-                </div>
-                <div class="review__date">
-                   작성일
-                </div>
-            </div>
-            <p>리뷰내용</p>
-            <span>작성자</span>
-            <span style="display: block;"> 따봉</span>
-        </div>
+        <!-- 디테일 -->
+        <section class="banner"></section>
 
-        <div class="review__card">
-            <div class="card-wrapper" >
-                <div class="review__stars">
-                    별별별별별
-                </div>
-                <div class="review__date">
-                   작성일
-                </div>
+        <!-- 리뷰박스 -->
+        <section id="review">
+            <div class="review__container">
+                <p class="write__review">리뷰 작성</span>
+                <p class="entire__review">전체 리뷰</span>
             </div>
-            <p>리뷰내용</p>
-            <span>작성자</span>
-            <span style="display: block;"> 따봉</span>
-        </div> -->
+            <form class="review__form">
+                <textarea class="review__text" placeholder="이 영화의 리뷰를 작성해 주세요!" required></textarea>
+                <input class="review__nickname" type="text" placeholder="이름" required>
+                <input class="review__password" type="password" placeholder="확인 비밀번호" required />
+                <button class="register__btn">리뷰 등록하기</button>
+            </form>
 
+            <div class="review__list">
+                <h1 class="review__title">전체 리뷰</h1>
+
+                <div class="review__card">
+                    <div class="card-wrapper">
+                        <div class="review__stars">
+                            별별별별별
+                        </div>
+                        <div class="review__date">
+                            작성일
+                        </div>
+                    </div>
+                    <p>리뷰내용</p>
+                    <span>작성자</span>
+                    <span style="display: block;"> 따봉</span>
+                </div>
+
+            </div>
+
+
+        </section>
     </div>
-   
-    </section>
-</div>
-     <!-- 푸터 -->
-     <footer>@ Copyright 2023 MOVIES</footer>
+    <!-- 푸터 -->
+    <footer>@ Copyright 2023 MOVIES</footer>
 
-    
-   <script src="review.js"></script>
+
+    <script src="review.js"></script>
 </body>
 
 </html>
