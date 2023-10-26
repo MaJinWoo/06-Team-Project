@@ -1,6 +1,5 @@
 let movieLists = []; // 맨 처음에 로딩될 때 가져온 영화 데이터를 담는 변수
-const button = document.getElementById("search-button");
-const input = document.getElementById("search-input");
+
 const $inputSearch = document.querySelector('.input-search');
 const $formSearch = document.getElementById('search');
 const banner = document.querySelector('.banner');
@@ -36,7 +35,12 @@ async function  init(){
   
 }
 
+// *** 진우 : 카드 클릭하면 id가 local storage에 저장
+function cardClick(id) {
+  window.localStorage.setItem("clickedID", id);
+  window.location.href = "movieDetail.html";
 
+}
 
 
 // making movie card
@@ -71,23 +75,19 @@ function movieCard(movie) {
 
 
   // 카드 누르면 id 뜬다.
-  // *** 진우 : 카드 클릭하면 id가 local storage에 저장
-
-  function cardClick() {
-    window.localStorage.setItem("clickedID", id);
-    window.location.href = "movieDetail.html";
-
-  }
-  card.addEventListener('click', cardClick);
+  
+  card.addEventListener('click', () => cardClick(id));
 
   }
 
 
-// 섹션 1 미리보기 카드 
-// 1. 카드를 가져온다
+// -----섹션 1 미리보기 카드 
+
 function moviebanner() {
   const randomNumber = Math.floor(Math.random()*20);
   const newMovie = movieLists[randomNumber];
+  const newBackgroundImage = newMovie.backdrop_path;
+  banner.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${newBackgroundImage}'), linear-gradient(to right, #000000, rgba(0,0,0,0.9), rgba(0,0,0,0))`;
 
   banner.innerHTML=
   ` <div class="card__detail">
@@ -116,14 +116,20 @@ function moviebanner() {
           <p class="overview">${newMovie.overview}</p>
       </div>
       <button class="detail__button">
-          More
+          자세히 보기
       </button>
   </div>
   <div class="detail__right">
       <img width="268" height="382" src="https://image.tmdb.org/t/p/w500/${newMovie.poster_path}">
   </div>  
-</div>`
+</div>`;
+//디테일 버튼을 클릭하면 상세 페이지로 이동
+const detail__btn = document.querySelector('.detail__button');
+detail__btn.addEventListener('click',() => {
+  cardClick(newMovie.id)
+});
 }
+// 1. 카드를 가져온다
 // 2. 실제 데이터를 넣어준다
 // 3. 랜덤으로 데이터를 돌린다. 
 
@@ -142,39 +148,45 @@ function saveMovieLocal() {
 
 
 // form의 submit시 input의 값에 이상이 있는지 확인하기위해 form의 이벤트리스너를 달아주었다.
-$formSearch.addEventListener('submit', onsubmitSearch);
+// $formSearch.addEventListener('submit', onsubmitSearch);
 
 
 // ---- 진우 : 검색기능 추가 ---
 $formSearch.addEventListener('submit', search);
 
 
-function search() {
+function search(e) {
+        e.preventDefault(); //기본동작 정지
+        const inputValue = $inputSearch.value.toUpperCase();
+        const filterdValue= filterValueFn(inputValue)
+
+        console.log(filterdValue)
+        if(filterdValue){
         const moviecard = document.getElementById('movie_info');
         moviecard.innerHTML = ''; 
-        inputValue = $inputSearch.value.toUpperCase();
         let filteredMovies = movieLists.filter((movie) => 
-        (movie.title.toUpperCase().includes(inputValue)
+        (movie.title.includes(inputValue)
         || movie.original_title.toUpperCase().includes(inputValue)));
         filteredMovies.forEach((result) => {
             movieCard(result);
         });
-        console.log(filteredMovies.title);
+      }
+      return
+        
 }
 // ----------------------------------
 
 //from이 submit시 실행될 함수 정의
-function onsubmitSearch(e) {
+function filterValueFn(inputValue) {
   // submit이벤트 사용시 주의점 * 서브밋 시 기본동작으로 페이지가 새로고침됩니다.
   // 그러므로 이벤트리스너가 반환하는 인지인 이벤트(e)를 가지고 기본동작을 멈춰줘야합니다.
-  e.preventDefault(); //기본동작 정지
-  const value = $inputSearch.value.trim(); //인풋의 벨류를 변수로저장 .trim()은 양쪽에 공백를 제거해주는 함수이다.
-  console.log(value); //인풋밸류를 잘 가지고왔는지 확인하기위한 콘솔로그
+  const trimInputValue = inputValue.trim(); //인풋의 벨류를 변수로저장 .trim()은 양쪽에 공백를 제거해주는 함수이다.
+  console.log(trimInputValue); //인풋밸류를 잘 가지고왔는지 확인하기위한 콘솔로그
 
   // input의 값이 "  "등 빈 공백이면 안된다.
   // trim()을 사용했기떄문에 "        " 이렇게 입력해도 ""와 같아집니다.
   let isEmpty = false; // 인풋의 값이 비어있는지를 나타내는 변수 기본값은 false
-  if (value === '') {
+  if (trimInputValue === '') {
     // 인풋이 비어있을경우 isEmpty를 true로 만들어줍니다.
     isEmpty = true;
   }
@@ -183,8 +195,8 @@ function onsubmitSearch(e) {
   const specialWord = '@#$%^&*()_+[]:;<>\\'; // 사용불가능한 특수문자목록
   let hasSpecialWord = false; // 벨류에 스페셜워드가 포함되었는지를 나타내는 변수이다 기본값은 false
   // 반복문을 통해 벨류에 스페셜워드가 포함되어있는지 확인해야한다.
-  for (let i = 0; i < value.length; i++) {
-    if (specialWord.includes(value[i])) {
+  for (let i = 0; i < trimInputValue.length; i++) {
+    if (specialWord.includes(trimInputValue[i])) {
       // 밸류의 i번째 요소가 스페셜워드에 포함된다면 hasSpecialWord를 true로 만든다.
       // 아니면 계속 반복
       hasSpecialWord = true;
@@ -195,13 +207,17 @@ function onsubmitSearch(e) {
 
   if (isEmpty) {
     // 만약인풋이 비어있다면 함수는 아래의 경고를 리턴하고 종료합니다.
-    return alert('빈 문자열은 입력하실 수 없어요');
+    alert('빈 문자열은 입력하실 수 없어요');
+    return false
   }
  
   if (hasSpecialWord) {
     // 만약 사용할수없는 특문사용시 아래의 경고를 리턴하고 종료합니다.
-    return alert(`사용하실 수 없는 특수문자${specialWord} 를 사용하셨습니다.`);
-  }
+    alert(`사용하실 수 없는 특수문자${specialWord} 를 사용하셨습니다.`);
+    return false
+  } 
+
+  return true
 
   // 이제 인풋은 허가되지않은 특수문자나 빈문자열의 입력이 불가능해진 상태입니다.
   // 올바른 검색어를 입력했을때 실행될 로직을 아래에 입력해주셔야합니다.
@@ -246,12 +262,21 @@ darkButton.addEventListener("click", function () {
   this.style.zIndex = "0";
   lightButton.style.opacity = "1";
   lightButton.style.zIndex = "1";
-  document.body.classList.add("light-mode");
+  document.documentElement.classList.add("light-mode");
 });
 lightButton.addEventListener("click", function () {
   this.style.opacity = "0";
   this.style.zIndex = "0";
   darkButton.style.opacity = "1";
   darkButton.style.zIndex = "1";
-  document.body.classList.remove("light-mode");
+  document.documentElement.classList.remove("light-mode");
+});
+
+//search 버튼 클릭 시 노출
+const searchButton = document.querySelector('.button-search');
+const searchForm = document.querySelector('#search');
+searchButton.addEventListener("click", function () {
+    searchForm.classList.contains("hide")
+        ? searchForm.classList.remove("hide")
+        : searchForm.classList.add("hide");
 });
