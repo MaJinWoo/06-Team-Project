@@ -27,9 +27,7 @@ fetch('https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=1', opti
   .catch(err => console.error(err));
 
 
-// 섹션 1 미리보기 카드 
-// 1. 카드를 가져온다
-document.querySelector(".card_detail").innerHTML =
+
 
 
 // 2. 실제 데이터를 넣어준다
@@ -72,8 +70,51 @@ function movieCard(movie){
   // 카드 누르면 id 뜬다.
   card.addEventListener('click',(card)=>{
   alert(`ID : ${id}`);})
- 
+
   }
+
+
+// 섹션 1 미리보기 카드 
+// 1. 카드를 가져온다
+function movieCard(movie, index){
+  document.querySelector(".banner").innerHTML=
+  ` <div class="card__detail">
+  <div class="detail__left">
+      <h3 class="mini-title">The Godfather</h3>
+      <h2 class="detail__title">${movie.title}</h2>
+      <div class="detail__info-box">
+          <div class="stars">
+              <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path fill="#ed3124" d="m5.825 22l1.625-7.025L2 10.25l7.2-.625L12 3l2.8 6.625l7.2.625l-5.45 4.725L18.175 22L12 18.275L5.825 22Z"/>
+              </svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path fill="#ed3124" d="m5.825 22l1.625-7.025L2 10.25l7.2-.625L12 3l2.8 6.625l7.2.625l-5.45 4.725L18.175 22L12 18.275L5.825 22Z"/>
+              </svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path fill="#ed3124" d="m5.825 22l1.625-7.025L2 10.25l7.2-.625L12 3l2.8 6.625l7.2.625l-5.45 4.725L18.175 22L12 18.275L5.825 22Z"/>
+              </svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path fill="#ed3124" d="m5.825 22l1.625-7.025L2 10.25l7.2-.625L12 3l2.8 6.625l7.2.625l-5.45 4.725L18.175 22L12 18.275L5.825 22Z"/>
+              </svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path fill="#ed3124" d="m8.85 17.825l3.15-1.9l3.15 1.925l-.825-3.6l2.775-2.4l-3.65-.325l-1.45-3.4l-1.45 3.375l-3.65.325l2.775 2.425l-.825 3.575ZM5.825 22l1.625-7.025L2 10.25l7.2-.625L12 3l2.8 6.625l7.2.625l-5.45 4.725L18.175 22L12 18.275L5.825 22ZM12 13.25Z"/>
+              </svg>
+              <span class="average">8.7</span>
+          </div>
+          <p class="overview">${movie.overview}</p>
+      </div>
+      <button class="detail__button">
+          버튼
+      </button>
+  </div>
+  <div class="detail__right">
+      <img width="268" height="382" src="https://image.tmdb.org/t/p/w500/I1fkNd5CeJGv56mhrTDoOeMc2r.jpg">
+  </div>  
+</div>`
+}
+
+
+
 
 
 
