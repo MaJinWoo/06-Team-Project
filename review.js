@@ -77,4 +77,5 @@ function getDetail() {
 
 }
 
+
 window.addEventListener('load', getDetail);
