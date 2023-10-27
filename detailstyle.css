@@ -1,58 +1,144 @@
 @import url(mymoviesite.css);
 
 /* 공통 */
-textarea{
+textarea {
     resize: none;
-    margin-bottom:30px;
 }
 
-.review__container{
-   display: flex;
-   justify-content: center;
-   margin-bottom: calc(var(--space-margin)*5);
+#review {
+    margin: calc(var(--space-margin) * 5) 0 calc(var(--space-margin) * 25);
 }
 
+.review__container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: calc(var(--space-margin) * 15);
+}
+
+.review__container > button {
+    border-radius: unset;
+    padding: calc(var(--space-margin) * 3) calc(var(--space-margin) * 5);
+    font-size: 18px;
+    cursor: pointer;
+}
+.write__review {
+    border-bottom: 2px solid var(--color-white);
+}
+
+.entire__review {
+}
+.rating-number {
+    margin: calc(var(--space-margin) * 5) 0;
+    font-size: 40px;
+    text-align: center;
+    color: var(--color-accent);
+}
+.review__rating {
+    width: 400px;
+    margin: 0 auto calc(var(--space-margin) * 10);
+}
+.button-stars {
+    display: flex;
+    justify-content: center;
+}
+.button-stars button {
+    width: 24px;
+    height: 51px;
+}
+.button-stars button:nth-child(even) {
+    transform: scaleX(-1);
+}
 
 /* 리뷰박스 => 닉네임, 비밀번호, 감상평*/
-.review__form{
-    display:flex;
+.review__form {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    gap:calc(var(--space-padding) * 2);
+    gap: calc(var(--space-padding) * 4);
 }
 
-.review__nickname,.review__password{
-    height: 35px;
-    width: 350px;
+.review__nickname,
+.review__password {
+    height: 40px;
+    width: 400px;
+    padding: 0 calc(var(--space-padding) * 5);
+    color: var(--color-white);
+    background-color: unset;
+    font-size: var(--font-smd);
+    border: 1px solid var(--color-medium-gray);
 }
-.review__text{
-    height: 150px;
-    width: 350px;
-
+.review__form textarea::placeholder,
+.review__form input::placeholder {
+    color: var(--color-light-gray);
 }
 
-.register__btn{
-    width:350px;
-    height:35px;
+.review__text {
+    width: 400px;
+    height: 200px;
+    padding: calc(var(--space-padding) * 5);
+    margin-bottom: calc(var(--space-margin) * 3);
+    background-color: unset;
+    color: var(--color-white);
+    font-size: var(--font-smd);
+}
+
+.register__btn {
+    width: 400px;
+    height: 40px;
+    margin-top: calc(var(--space-margin) * 5);
     text-align: center;
     background-color: var(--color-accent);
-    color:var(--color-white);
+    color: var(--color-white);
 }
 /* 리뷰 리스트 및 리뷰카드 */
-.review__list{
-    margin:0 auto;
+.review__list {
+    margin: 0 auto;
     max-width: 800px;
-    display:flex;
+    display: flex;
     flex-direction: column;
-    gap:calc(var(--space-padding) * 2);
-    margin-top:calc(var(--space-margin) * 10);
+    gap: calc(var(--space-padding) * 2);
+    margin-top: calc(var(--space-margin) * 25);
+    color: var(--color-white);
 }
 
-.review__title{
-    font-size:var(--font-md)
+.review__title {
+    font-size: var(--font-md);
+    margin-bottom: calc(var(--space-margin) * 12);
 }
 
-.card-wrapper{
-    display:flex;
+.card-wrapper {
+    display: flex;
     justify-content: space-between;
+}
+.card-wrapper .stars {
+    margin-bottom: calc(var(--space-margin) * 4);
+}
+
+.review__card-wrap {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 50px;
+}
+
+.review__card {
+    position: relative;
+    width: 100%;
+    min-height: 100px;
+}
+
+.review__content {
+    margin-bottom: calc(var(--space-margin) * 2);
+    line-height: 1.5;
+}
+
+.user__name {
+    font-size: var(--font-sm);
+    color: var(--color-medium-gray);
+}
+.review__date {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: var(--font-sm);
+    color: var(--color-medium-gray);
 }

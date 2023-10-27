@@ -1,92 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Movie detail</title>
+        <link rel="stylesheet" href="detailstyle.css" />
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie detail</title>
-    <link rel="stylesheet" href="detailstyle.css">
-</head>
-
-<body>
-
-    <!-- 헤드 fixed헤더 + 검색창 -->
-    <header id="header">
-        <div class="container">
-            <div class="header__inner">
-                <h1 class="header__home"><a href="#">MOVIES</a></h1>
-                <div class="button_wrap">
-                    <button class='button-search'>
-                        <span class="hidden">검색</span>
-                        <svg width="28" height="28" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                            <path fill="#ffffff"
-                                d="m29 27.586l-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9a9.01 9.01 0 0 1-9-9Z" />
-                        </svg>
-                    </button>
-                    <button class='button-darkmode'>
-                        <span class="hidden">다크모드</span>
-                        <svg width="28" height="28" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
-                            <path fill="#ffffff"
-                                d="M233.54 142.23a8 8 0 0 0-8-2a88.08 88.08 0 0 1-109.8-109.8a8 8 0 0 0-10-10a104.84 104.84 0 0 0-52.91 37A104 104 0 0 0 136 224a103.09 103.09 0 0 0 62.52-20.88a104.84 104.84 0 0 0 37-52.91a8 8 0 0 0-1.98-7.98Zm-44.64 48.11A88 88 0 0 1 65.66 67.11a89 89 0 0 1 31.4-26A106 106 0 0 0 96 56a104.11 104.11 0 0 0 104 104a106 106 0 0 0 14.92-1.06a89 89 0 0 1-26.02 31.4Z" />
-                        </svg>
-                        <svg width="28" height="28" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
-                            <path fill="#ffffff"
-                                d="M120 40V16a8 8 0 0 1 16 0v24a8 8 0 0 1-16 0Zm72 88a64 64 0 1 1-64-64a64.07 64.07 0 0 1 64 64Zm-16 0a48 48 0 1 0-48 48a48.05 48.05 0 0 0 48-48ZM58.34 69.66a8 8 0 0 0 11.32-11.32l-16-16a8 8 0 0 0-11.32 11.32Zm0 116.68l-16 16a8 8 0 0 0 11.32 11.32l16-16a8 8 0 0 0-11.32-11.32ZM192 72a8 8 0 0 0 5.66-2.34l16-16a8 8 0 0 0-11.32-11.32l-16 16A8 8 0 0 0 192 72Zm5.66 114.34a8 8 0 0 0-11.32 11.32l16 16a8 8 0 0 0 11.32-11.32ZM48 128a8 8 0 0 0-8-8H16a8 8 0 0 0 0 16h24a8 8 0 0 0 8-8Zm80 80a8 8 0 0 0-8 8v24a8 8 0 0 0 16 0v-24a8 8 0 0 0-8-8Zm112-88h-24a8 8 0 0 0 0 16h24a8 8 0 0 0 0-16Z" />
-                        </svg>
-                    </button>
+    <body>
+        <!-- 헤드 fixed헤더 + 검색창 -->
+        <header id="header">
+            <div class="container">
+                <div class="header__inner">
+                    <h1 class="header__home"><a href="#">MOVIES</a></h1>
+                    <div class="button_wrap">
+                        <button class="button-search-open">
+                            <span class="hidden">검색</span>
+                            <svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    fill="#ffffff"
+                                    d="M10.77 18.3a7.53 7.53 0 1 1 7.53-7.53a7.53 7.53 0 0 1-7.53 7.53Zm0-13.55a6 6 0 1 0 6 6a6 6 0 0 0-6-6Z"
+                                />
+                                <path
+                                    fill="#ffffff"
+                                    d="M20 20.75a.74.74 0 0 1-.53-.22l-4.13-4.13a.75.75 0 0 1 1.06-1.06l4.13 4.13a.75.75 0 0 1 0 1.06a.74.74 0 0 1-.53.22Z"
+                                />
+                            </svg>
+                        </button>
+                        <button class="button-darkmode">
+                            <span class="hidden">다크모드</span>
+                            <svg width="28" height="28" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    fill="#ffffff"
+                                    d="M233.54 142.23a8 8 0 0 0-8-2a88.08 88.08 0 0 1-109.8-109.8a8 8 0 0 0-10-10a104.84 104.84 0 0 0-52.91 37A104 104 0 0 0 136 224a103.09 103.09 0 0 0 62.52-20.88a104.84 104.84 0 0 0 37-52.91a8 8 0 0 0-1.98-7.98Zm-44.64 48.11A88 88 0 0 1 65.66 67.11a89 89 0 0 1 31.4-26A106 106 0 0 0 96 56a104.11 104.11 0 0 0 104 104a106 106 0 0 0 14.92-1.06a89 89 0 0 1-26.02 31.4Z"
+                                />
+                            </svg>
+                        </button>
+                        <button class="button-lightmode">
+                            <span class="hidden">라이트모드</span>
+                            <svg width="28" height="28" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    fill="#010101"
+                                    d="M120 40V16a8 8 0 0 1 16 0v24a8 8 0 0 1-16 0Zm72 88a64 64 0 1 1-64-64a64.07 64.07 0 0 1 64 64Zm-16 0a48 48 0 1 0-48 48a48.05 48.05 0 0 0 48-48ZM58.34 69.66a8 8 0 0 0 11.32-11.32l-16-16a8 8 0 0 0-11.32 11.32Zm0 116.68l-16 16a8 8 0 0 0 11.32 11.32l16-16a8 8 0 0 0-11.32-11.32ZM192 72a8 8 0 0 0 5.66-2.34l16-16a8 8 0 0 0-11.32-11.32l-16 16A8 8 0 0 0 192 72Zm5.66 114.34a8 8 0 0 0-11.32 11.32l16 16a8 8 0 0 0 11.32-11.32ZM48 128a8 8 0 0 0-8-8H16a8 8 0 0 0 0 16h24a8 8 0 0 0 8-8Zm80 80a8 8 0 0 0-8 8v24a8 8 0 0 0 16 0v-24a8 8 0 0 0-8-8Zm112-88h-24a8 8 0 0 0 0 16h24a8 8 0 0 0 0-16Z"
+                                />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <div class="container">
+        <div class="container">
+            <!-- 디테일 -->
+            <section class="banner"></section>
 
-    <div class="review__list">
-        <h1 class="review__title">전체 리뷰</h1>
+            <!-- 리뷰박스 -->
+            <section id="review">
+                <div class="review__container">
+                    <button class="write__review">리뷰 작성</button>
+                    <button class="entire__review">전체 리뷰</button>
+                </div>
+                <div class="review__rating">
+                    <p class="rating-number">10</p>
+                    <div class="button-stars">
+                        <button>
+                            <svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    fill="none"
+                                    stroke="#ed3124"
+                                    stroke-linejoin="round"
+                                    d="m12 2l3.104 6.728l7.358.873l-5.44 5.03l1.444 7.268L12 18.28L5.534 21.9l1.444-7.268L1.538 9.6l7.359-.873L12 2Z"
+                                />
+                            </svg>
+                        </button>
+                        <button>
+                            <svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    fill="none"
+                                    stroke="#ed3124"
+                                    stroke-linejoin="round"
+                                    d="m12 2l3.104 6.728l7.358.873l-5.44 5.03l1.444 7.268L12 18.28L5.534 21.9l1.444-7.268L1.538 9.6l7.359-.873L12 2Z"
+                                />
+                            </svg>
+                        </button>
+                        <button>
+                            <svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    fill="none"
+                                    stroke="#ed3124"
+                                    stroke-linejoin="round"
+                                    d="m12 2l3.104 6.728l7.358.873l-5.44 5.03l1.444 7.268L12 18.28L5.534 21.9l1.444-7.268L1.538 9.6l7.359-.873L12 2Z"
+                                />
+                            </svg>
+                        </button>
+                        <button>
+                            <svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    fill="none"
+                                    stroke="#ed3124"
+                                    stroke-linejoin="round"
+                                    d="m12 2l3.104 6.728l7.358.873l-5.44 5.03l1.444 7.268L12 18.28L5.534 21.9l1.444-7.268L1.538 9.6l7.359-.873L12 2Z"
+                                />
+                            </svg>
+                        </button>
+                        <button>
+                            <svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    fill="none"
+                                    stroke="#ed3124"
+                                    stroke-linejoin="round"
+                                    d="m12 2l3.104 6.728l7.358.873l-5.44 5.03l1.444 7.268L12 18.28L5.534 21.9l1.444-7.268L1.538 9.6l7.359-.873L12 2Z"
+                                />
+                            </svg>
+                        </button>
+                        <button>
+                            <svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    fill="none"
+                                    stroke="#ed3124"
+                                    stroke-linejoin="round"
+                                    d="m12 2l3.104 6.728l7.358.873l-5.44 5.03l1.444 7.268L12 18.28L5.534 21.9l1.444-7.268L1.538 9.6l7.359-.873L12 2Z"
+                                />
+                            </svg>
+                        </button>
+                        <button>
+                            <svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    fill="none"
+                                    stroke="#ed3124"
+                                    stroke-linejoin="round"
+                                    d="m12 2l3.104 6.728l7.358.873l-5.44 5.03l1.444 7.268L12 18.28L5.534 21.9l1.444-7.268L1.538 9.6l7.359-.873L12 2Z"
+                                />
+                            </svg>
+                        </button>
+                        <button>
+                            <svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    fill="none"
+                                    stroke="#ed3124"
+                                    stroke-linejoin="round"
+                                    d="m12 2l3.104 6.728l7.358.873l-5.44 5.03l1.444 7.268L12 18.28L5.534 21.9l1.444-7.268L1.538 9.6l7.359-.873L12 2Z"
+                                />
+                            </svg>
+                        </button>
+                        <button>
+                            <svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    fill="none"
+                                    stroke="#ed3124"
+                                    stroke-linejoin="round"
+                                    d="m12 2l3.104 6.728l7.358.873l-5.44 5.03l1.444 7.268L12 18.28L5.534 21.9l1.444-7.268L1.538 9.6l7.359-.873L12 2Z"
+                                />
+                            </svg>
+                        </button>
+                        <button>
+                            <svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    fill="none"
+                                    stroke="#ed3124"
+                                    stroke-linejoin="round"
+                                    d="m12 2l3.104 6.728l7.358.873l-5.44 5.03l1.444 7.268L12 18.28L5.534 21.9l1.444-7.268L1.538 9.6l7.359-.873L12 2Z"
+                                />
+                            </svg>
+                        </button>
+                        <!-- <button>
+                        <svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="#ed3124" d="m12 18.26l-7.053 3.948l1.575-7.928L.588 8.792l8.027-.952L12 .5l3.385 7.34l8.027.952l-5.934 5.488l1.575 7.928L12 18.26Z"/>
+                        </svg>
+                    </button> -->
+                    </div>
+                </div>
+                <form class="review__form">
+                    <textarea class="review__text" placeholder="이 영화의 리뷰를 작성해 주세요!" required></textarea>
+                    <input class="review__nickname" type="text" placeholder="이름" required />
+                    <input class="review__password" type="password" placeholder="확인 비밀번호" required />
+                    <button class="register__btn">리뷰 등록하기</button>
+                </form>
 
-        <!-- 디테일 -->
-        <section class="banner"></section>
-
-        <!-- 리뷰박스 -->
-        <section id="review">
-            <div class="review__container">
-                <p class="write__review">리뷰 작성</span>
-                <p class="entire__review">전체 리뷰</span>
-            </div>
-            <form class="review__form">
-                <textarea class="review__text" placeholder="이 영화의 리뷰를 작성해 주세요!" required></textarea>
-                <input class="review__nickname" type="text" placeholder="이름" required>
-                <input class="review__password" type="password" placeholder="확인 비밀번호" required />
-                <button class="register__btn">리뷰 등록하기</button>
-            </form>
-
-            <div class="review__list">
-                <h1 class="review__title">전체 리뷰</h1>
-
-                <div class="review__card">
-                    <div class="card-wrapper">
-                        <div class="review__stars">
-                            별별별별별
-                        </div>
-                        <div class="review__date">
-                            작성일
+                <div class="review__list">
+                    <h1 class="review__title">전체 리뷰</h1>
+                    <div class="review__card-wrap">
+                        <div class="review__card">
+                            <div class="card-wrapper">
+                                <div class="review__stars">
+                                    <div class="stars">
+                                        <svg
+                                            width="18"
+                                            height="18"
+                                            viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                fill="#ed3124"
+                                                d="m5.825 22l1.625-7.025L2 10.25l7.2-.625L12 3l2.8 6.625l7.2.625l-5.45 4.725L18.175 22L12 18.275L5.825 22Z"
+                                            ></path>
+                                        </svg>
+                                        <svg
+                                            width="18"
+                                            height="18"
+                                            viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                fill="#ed3124"
+                                                d="m5.825 22l1.625-7.025L2 10.25l7.2-.625L12 3l2.8 6.625l7.2.625l-5.45 4.725L18.175 22L12 18.275L5.825 22Z"
+                                            ></path>
+                                        </svg>
+                                        <svg
+                                            width="18"
+                                            height="18"
+                                            viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                fill="#ed3124"
+                                                d="m5.825 22l1.625-7.025L2 10.25l7.2-.625L12 3l2.8 6.625l7.2.625l-5.45 4.725L18.175 22L12 18.275L5.825 22Z"
+                                            ></path>
+                                        </svg>
+                                        <svg
+                                            width="18"
+                                            height="18"
+                                            viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                fill="#ed3124"
+                                                d="m5.825 22l1.625-7.025L2 10.25l7.2-.625L12 3l2.8 6.625l7.2.625l-5.45 4.725L18.175 22L12 18.275L5.825 22Z"
+                                            ></path>
+                                        </svg>
+                                        <svg
+                                            width="18"
+                                            height="18"
+                                            viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                fill="#ed3124"
+                                                d="m8.85 17.825l3.15-1.9l3.15 1.925l-.825-3.6l2.775-2.4l-3.65-.325l-1.45-3.4l-1.45 3.375l-3.65.325l2.775 2.425l-.825 3.575ZM5.825 22l1.625-7.025L2 10.25l7.2-.625L12 3l2.8 6.625l7.2.625l-5.45 4.725L18.175 22L12 18.275L5.825 22ZM12 13.25Z"
+                                            ></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="review__date">작성일</div>
+                            </div>
+                            <p class="review__content">
+                                리뷰내용이 들어갑니다. 리뷰내용이 들어갑니다. 리뷰내용이 들어갑니다.
+                            </p>
+                            <p class="user__name">작성자</p>
                         </div>
                     </div>
-                    <p>리뷰내용</p>
-                    <span>작성자</span>
-                    <span style="display: block;"> 따봉</span>
                 </div>
+            </section>
+        </div>
+        <!-- 푸터 -->
+        <footer>@ Copyright 2023 MOVIES</footer>
 
-            </div>
-
-
-        </section>
-    </div>
-    <!-- 푸터 -->
-    <footer>@ Copyright 2023 MOVIES</footer>
-
-
-    <script src="review.js"></script>
-</body>
-
+        <!-- <script src="review.js"></script> -->
+        <script src="jiyeon_test.js"></script>
+    </body>
 </html>

@@ -203,7 +203,7 @@ section {
     z-index: 9;
 }
 .detail__left .mini-title {
-    margin-bottom: 20px;
+    margin-bottom: calc(var(--space-margin) * 5);
     color: #777;
     font-size: 16px;
     font-weight: 400;
