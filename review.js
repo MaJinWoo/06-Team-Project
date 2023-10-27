@@ -13,20 +13,21 @@ const reviewText = document.querySelector('.review__text');
 let reviews = [];
 
 function showReviews() {
-    //기존에 리뷰가 없으면 전체리뷰를 보여주지 않음
-    if (!reviews) return;
-    reviews = JSON.parse(localStorage.getItem('reviews'));
-
-    //로컬 스토리지에 저장된 리뷰들을 불러옴
+    //기존에 작성된 리뷰가 있는지 확인함
+    const checked = JSON.parse(localStorage.getItem('reviews'));
+    //작성된 리뷰가 없으면 전체 리뷰를 보여주지 않음
+    if (checked === null) return;
+    //작성된 리뷰가 있으면 기존에 저장된 리뷰들을 reviews 배열에 재할당한다. 
+    reviews = checked;
     reviews.forEach(review => {
-        const getReview = createReview(review.nickname, review.text);
+        const getReview = createReview(review.nickname, review.text, review.date);
         reviewList.appendChild(getReview);
     })
 
 
 }
 
-function createReview(name, comment) {
+function createReview(name, comment, date) {
     //전체 리뷰에 리뷰가 추가됨. 
     const reviewCard = document.createElement('div');
     reviewCard.setAttribute('class', 'review__card');
@@ -35,7 +36,7 @@ function createReview(name, comment) {
                                     별별별별별
                                 </div>
                             <div class="review__date">
-                            ${new Date().toLocaleDateString()}
+                            ${date}
                             </div>
                         </div>
                         <p>${comment}</p>
@@ -54,13 +55,15 @@ function addReview() {
     const nickname = reviewNickname.value;
     const password = reviewPassword.value;
     const text = reviewText.value;
-    const newReview = createReview(nickname, text);
+    const date = new Date().toLocaleDateString();
+    const newReview = createReview(nickname, text, date);
     //리뷰 리스트에 입력한 리뷰 추가
     reviewList.appendChild(newReview);
     reviews.push({
         nickname: nickname,
         password: password,
-        text: text
+        text: text,
+        date: date
     });
     saveReviews();
     reviewNickname.value = '';
@@ -141,123 +144,11 @@ function getDetail() {
 
 }
 
-<<<<<<< HEAD
-window.addEventListener('load', getDetail);
-
-
-
-
-
-
-// 진우코드 (리뷰기능과 회원가입 기능 추가)
-const $review__text = document.querySelector('.review__text');
-const $review__nickname = document.querySelector('.review__nickname');
-const $review__password = document.querySelector('.review__password');
-const $review__button = document.querySelector('.register__btn');
-const $review__card = document.querySelector('.review__card');
-const $review__list = document.querySelector('.review__list');
-
-function registerReview(e){
-    e.preventDefault();
-    let review = $review__text.value;
-    let nickname = $review__nickname.value;
-    let password = $review__password.value;
-
-    let userInfo = [];
-    userInfo = [review,nickname,password];
-
-    // userInfo.forEach((value)=>{filterValueFn(value)});
-
-    window.localStorage.setItem("userInfo", JSON.stringify(userInfo));
-    console.log(userInfo);
-
-    let userReviewName = document.createElement('div');
-    let userName = document.createElement('span');
-    let userReview = document.createElement('p');
-    let reviewDate = document.createElement('span');
-    
-    let today = new Date();
-    let year = today.getFullYear();
-    let month = today.getMonth() + 1;
-    let date = today.getDate();
-
-    userReviewName.setAttribute('class', 'review__card');
-    reviewDate.setAttribute('class', 'review__date');
-    userName.setAttribute('class', 'user__name');
-    userReview.setAttribute('class', 'review__content');
-    
-    userReviewName.appendChild(userName);
-    userReviewName.appendChild(userReview);
-    userReviewName.appendChild(reviewDate);
-
-    $review__list.appendChild(userReviewName);
-
-    userName.append(nickname);
-    userReview.append(review);
-    reviewDate.innerHTML = `${year}. ${month}. ${date}.`;
-
-    return;
-
-}
-
-$review__button.addEventListener('click',registerReview);
-
-
-// 초기화
-function resetReviewForm(){
-    $review__text.value = '';
-    $review__nickname.value = '';
-    $review__password.value = '';
-}
-
-$review__button.addEventListener('click',resetReviewForm);
-
-
-
-
-
-
-
-
-// function filterValueFn(inputValue) {
-//     // submit이벤트 사용시 주의점 * 서브밋 시 기본동작으로 페이지가 새로고침됩니다.
-//     // 그러므로 이벤트리스너가 반환하는 인지인 이벤트(e)를 가지고 기본동작을 멈춰줘야합니다.
-//     const trimInputValue = inputValue.trim(); 
-//     console.log(trimInputValue);
-
-//     let isEmpty = false; 
-//     if (trimInputValue === '') {
-//       isEmpty = true;
-//     }
-  
-//     const specialWord = '@#$%^&*()_+[]:;<>\\'; 
-//     let hasSpecialWord = false;
-//     for (let i = 0; i < trimInputValue.length; i++) {
-//       if (specialWord.includes(trimInputValue[i])) {
-//         hasSpecialWord = true;
-//         break;
-  
-//       }
-//     }
-  
-//     if (isEmpty) {
-//       alert('빈 문자열은 입력하실 수 없어요');
-//       return false
-//     }
-   
-//     if (hasSpecialWord) {
-//       alert(`사용하실 수 없는 특수문자${specialWord} 를 사용하셨습니다.`);
-//       return false
-//     } 
-  
-//     return true
-  
-//   }
-=======
 reviewForm.addEventListener('submit', (e) => {
+    e.preventDefault();
     addReview();
-    e.preventDefault()
+
 });
 goHomeBtn.addEventListener('click', goHome);
 window.addEventListener('load', getDetail);
->>>>>>> 7a3692bd0596a40b7ef30015d4e94d5623dd28cd
+
