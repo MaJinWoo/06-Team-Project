@@ -16,7 +16,7 @@ let reviewCount = 0; //리뷰 갯수
 
 function showReviews() {
     //기존에 작성된 리뷰가 있는지 확인함
-    const checked = JSON.parse(localStorage.getItem('reviews'));
+    const checked = JSON.parse(localStorage.getItem(`reviews-${id}`));
     //작성된 리뷰가 없으면 전체 리뷰를 보여주지 않음
     if (checked === null) return;
     //작성된 리뷰가 있으면 기존에 저장된 리뷰들을 reviews 배열에 재할당한다. 
@@ -44,8 +44,8 @@ function createReview(name, comment, date) {
                             ${date}
                             </div>
                         </div>
-                        <p>${comment}</p>
-                        <span>${name}</span>
+                        <p class="review__content">${comment}</p>
+                        <span class="user__name">${name}</span>
                         <span style="display: block;"> 따봉</span>
                         </div>`;
     return reviewCard;
@@ -53,7 +53,7 @@ function createReview(name, comment, date) {
 }
 
 function saveReviews() {
-    localStorage.setItem('reviews', JSON.stringify(reviews));
+    localStorage.setItem(`reviews-${id}`, JSON.stringify(reviews));
 }
 
 function updateReviewCount(num) {

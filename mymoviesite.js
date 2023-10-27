@@ -8,7 +8,6 @@ let newBackgroundImage;
 
 // 테스트용
 const $sectionTest = document.getElementById("section-test");
-const $starBox = document.querySelector(".star__box");
 
 const options = {
     method: "GET",
@@ -281,10 +280,8 @@ searchButton.addEventListener("click", function () {
 
 let changeBannerColor = function () {
     if (document.documentElement.classList.contains("light-mode")) {
-        console.log("light-mode");
         banner.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${newBackgroundImage}'), linear-gradient(to right, #ffffff, rgba(255,255,255,0.9), rgba(0,0,0,0))`;
     } else {
-        console.log("NOT light-mode");
         banner.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${newBackgroundImage}'), linear-gradient(to right, #000000, rgba(0,0,0,0.9), rgba(0,0,0,0))`;
     }
 };
@@ -322,7 +319,6 @@ function makeStars(average) {
 // html은 박스 및에 5개의 빈 별이 들어가있는 상태입니다.
 // 박스에 클릭 이벤트 리스너를 달아줍니다.
 // 문제점 svg요소를 클릭시 정상 작동하나 path부분을 클릭시 버그 발생..
-$starBox.addEventListener("click", modifyStars);
 
 function modifyStars(e) {
     if (e.target.tagName === "path") {
