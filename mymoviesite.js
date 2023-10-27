@@ -110,9 +110,6 @@ function moviebanner() {
         cardClick(newMovie.id);
     });
 }
-// 1. 카드를 가져온다
-// 2. 실제 데이터를 넣어준다
-// 3. 랜덤으로 데이터를 돌린다.
 
 // *** 진우 : movie에 영화정보 저장
 function saveMovieLocal() {

@@ -76,45 +76,20 @@ function getDetail() {
 
 
 }
+// 저장을 클릭하면 리뷰를 저장하도록 하는 이벤트 만들기.
+// 저장된 리뷰를 
 
-
-// ---------저장을 클릭하면 리뷰가 로컬스토리지에 저장되고 출력되도록 하기.
-// 1. 리뷰 등록하기를 눌렀을 때 값을 가져오기.
-// 2. 가져온 값을 로컬스토리지에 넣는다.
-//  -> 기존의 로컬 스토리지에서 값을 가져온 다음 새로운 값을 추가 하여 다시 로컬스토리지에 저장.
-
-
-
-
-// const register__btn = document.querySelector('.revieregister__btnw_list')
-// const review_list = document.querySelector('.review_list'); 
-
-
-document.querySelector('.register__btn').addEventListener("click", function(event){
-    event.preventDefault() //-> 버튼을 눌렀을 때 새로고침을 하지 않게 해주는 용도.
-    const review__text = document.querySelector('.review__text').value;
-    const review__nickname = document.querySelector('.review__nickname').value;
-    const review__password = document.querySelector('.review__password').value;
-
-    let reviewinfo = [review__text,review__nickname,review__password];
-
-    window.localStorage.setItem('reviewrinfo', JSON.stringify(reviewinfo));
-    console.log(reviewinfo);
-})
-
-
-
-    
-
+const review__text = document.getElementsByClassName('.review__text');
+const review__nickname = document.getElementsByClassName('.review__nickname');
+const review__password = document.getElementsByClassName('.review__password');
+const register__btn = document.getElementsByClassName('.revieregister__btnw_list');
+const review_list = document.getElementsByClassName('.review_list');
+const review
 
 // document.getElementsByClassName{}
 // window.onload = function() {
 //     loadreview();
 // };
-
-
-
-
 
 
 
