@@ -45,7 +45,6 @@ function cardClick(id) {
 // making movie card
 function movieCard(movie) {
     const title = movie["title"];
-    const overview = movie["overview"];
     const posterPath = movie["poster_path"];
     const voteAverage = movie["vote_average"];
     const id = movie["id"];
@@ -280,14 +279,16 @@ searchButton.addEventListener("click", function () {
 
 let changeBannerColor = function () {
     if (document.documentElement.classList.contains("light-mode")) {
+        console.log("light-mode");
         banner.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${newBackgroundImage}'), linear-gradient(to right, #ffffff, rgba(255,255,255,0.9), rgba(0,0,0,0))`;
     } else {
+        console.log("NOT light-mode");
         banner.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${newBackgroundImage}'), linear-gradient(to right, #000000, rgba(0,0,0,0.9), rgba(0,0,0,0))`;
     }
 };
 
 // 평점을 가지고 별을 그려주는 함수이다.
-function makeStars(average) {
+function makeStars(average,) {
     // 인자로 받는 average는 평점을 뜻한다.
     printStarIndex = Math.floor(average / 2); // 평점은 8.6 이런식으로 들어와서 Math.floor를사용해 내려주고 별점은 5점만점으로 2를 나눠주었다.
 
@@ -315,37 +316,3 @@ function makeStars(average) {
     return result;
 }
 
-// 별점을 줄수있는 함수입니다.
-// html은 박스 및에 5개의 빈 별이 들어가있는 상태입니다.
-// 박스에 클릭 이벤트 리스너를 달아줍니다.
-// 문제점 svg요소를 클릭시 정상 작동하나 path부분을 클릭시 버그 발생..
-
-function modifyStars(e) {
-    if (e.target.tagName === "path") {
-        e.target = e.target.parentElement; // path 요소를 클릭했을 때 버그수정을 위해 부모인 svg 요소를 대상으로 변경
-    }
-    if (e.target.tagName !== "svg") return; // div같은거 가끔 눌려서 그때마다 버그걸리는거 수정을 위해 조건 추가.
-
-    const parentNodeList = Array.from($starBox.children); // 해당변수는 별을 담고있는 박스의 자식요소들을 가져옵니다.
-    // html요소들은 htmlcollection이라는 요소로 배열처럼 생겼지만 배열이 아닙니다.
-    // 그러므로 Array.from()안에 담아서 배열로 바꿔줍니다.(배열 메소드 사용하기 위해)
-
-    const printIndex = parentNodeList.indexOf(e.target); //indexOf라는 배열메소드를 사용하여 지금 클릭한 타겟이 몇번째 요소인지 찾습니다.
-    //e라는건 이벤트로 e.target은 현재 이벤트가 일어난(클릭된 녀석)녀석입니다.
-
-    // 박스가 가진 별의 수만 큼 반복하는 함수를 실행하여 인덱스가 프린트인덱스보다 작거나 같으면 채워진 별을 innerHtml로 덮어주고
-    // 아닌경우 빈별을 innerHtml로 덮어줍니다.
-    parentNodeList.forEach((children, index) => {
-        console.log(parentNodeList[index]);
-        if (index <= printIndex) {
-            parentNodeList[index].innerHTML = `
-                                              
-                                                <path fill="#ed3124" d="m5.825 22l1.625-7.025L2 10.25l7.2-.625L12 3l2.8 6.625l7.2.625l-5.45 4.725L18.175 22L12 18.275L5.825 22Z"/>
-                                              `;
-        } else {
-            parentNodeList[index].innerHTML = `
-                                                <path fill="#ed3124" d="m8.85 17.825l3.15-1.9l3.15 1.925l-.825-3.6l2.775-2.4l-3.65-.325l-1.45-3.4l-1.45 3.375l-3.65.325l2.775 2.425l-.825 3.575ZM5.825 22l1.625-7.025L2 10.25l7.2-.625L12 3l2.8 6.625l7.2.625l-5.45 4.725L18.175 22L12 18.275L5.825 22ZM12 13.25Z"/>
-                                              `;
-        }
-    });
-}
