@@ -1,58 +1,82 @@
 @import url(mymoviesite.css);
 
 /* 공통 */
-textarea{
+textarea {
     resize: none;
-    margin-bottom:30px;
+    margin-bottom: 30px;
 }
 
-.review__container{
-   display: flex;
-   justify-content: center;
-   margin-bottom: calc(var(--space-margin)*5);
+.review__container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: calc(var(--space-margin)*5);
+}
+
+.write__review,
+.entire__review {
+    padding: calc(var(--space-padding) *4);
+    font-size: 18px;
+}
+
+.write__review:hover,
+.entire__review:hover {
+    font-weight: bold;
+    filter: brightness(120%);
+    border-bottom: 2px solid var(--color-white);
 }
 
 
 /* 리뷰박스 => 닉네임, 비밀번호, 감상평*/
-.review__form{
-    display:flex;
+.review__form {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    gap:calc(var(--space-padding) * 2);
+    gap: calc(var(--space-padding) * 2);
 }
 
-.review__nickname,.review__password{
+.review__nickname,
+.review__password {
     height: 35px;
     width: 350px;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border: 0.3px solid var(--color-white);
 }
-.review__text{
+
+.review__text {
     height: 150px;
     width: 350px;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    outline: none;
 
 }
 
-.register__btn{
-    width:350px;
-    height:35px;
+.register__btn {
+    width: 350px;
+    height: 35px;
     text-align: center;
     background-color: var(--color-accent);
-    color:var(--color-white);
+    color: var(--color-white);
 }
+
 /* 리뷰 리스트 및 리뷰카드 */
-.review__list{
-    margin:0 auto;
+.review__list {
+    margin: 0 auto;
     max-width: 800px;
-    display:flex;
+    display: flex;
     flex-direction: column;
-    gap:calc(var(--space-padding) * 2);
-    margin-top:calc(var(--space-margin) * 10);
+    gap: calc(var(--space-padding) * 2);
+    margin-top: calc(var(--space-margin) * 10);
 }
 
-.review__title{
-    font-size:var(--font-md)
+.review__title {
+    color: var(--color-white);
+    font-size: var(--font-md);
+    font-weight: bold;
 }
 
-.card-wrapper{
-    display:flex;
+.card-wrapper {
+    display: flex;
     justify-content: space-between;
 }

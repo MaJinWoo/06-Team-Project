@@ -6,11 +6,13 @@ const id = localStorage.getItem('clickedID');
 const goHomeBtn = document.querySelector('.header__home');
 const reviewForm = document.querySelector('.review__form');
 const reviewList = document.querySelector('.review__list');
+const totalReviewCount = document.querySelector('.total-review-count');
 const reviewNickname = document.querySelector('.review__nickname');
 const reviewPassword = document.querySelector('.review__password');
 const reviewText = document.querySelector('.review__text');
 
 let reviews = [];
+let reviewCount = 0; //리뷰 갯수
 
 function showReviews() {
     //기존에 작성된 리뷰가 있는지 확인함
@@ -19,6 +21,9 @@ function showReviews() {
     if (checked === null) return;
     //작성된 리뷰가 있으면 기존에 저장된 리뷰들을 reviews 배열에 재할당한다. 
     reviews = checked;
+    //작성된 리뷰 갯수 불러올 때 리뷰 갯수 업데이트
+    reviewCount = reviews.length;
+    updateReviewCount(reviewCount);
     reviews.forEach(review => {
         const getReview = createReview(review.nickname, review.text, review.date);
         reviewList.appendChild(getReview);
@@ -51,6 +56,10 @@ function saveReviews() {
     localStorage.setItem('reviews', JSON.stringify(reviews));
 }
 
+function updateReviewCount(num) {
+    totalReviewCount.innerText = num;
+}
+
 function addReview() {
     const nickname = reviewNickname.value;
     const password = reviewPassword.value;
@@ -65,6 +74,8 @@ function addReview() {
         text: text,
         date: date
     });
+    reviewCount += 1;
+    updateReviewCount(reviewCount);
     saveReviews();
     reviewNickname.value = '';
     reviewPassword.value = '';
