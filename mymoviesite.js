@@ -46,7 +46,7 @@ function cardClick(id) {
 function movieCard(movie) {
     const title = movie["title"];
     const posterPath = movie["poster_path"];
-    const voteAverage = movie["vote_average"];
+    const voteAverage = +movie["vote_average"].toFixed(1);
     const id = movie["id"];
     const subTitle = movie["original_title"];
 
@@ -94,7 +94,7 @@ function moviebanner() {
       <div class="detail__info-box">
           <div class="stars">
             ${stars}          
-              <span class="average">${newMovie.vote_average}</span>
+              <span class="average">${newMovie.vote_average.toFixed(1)}</span>
           </div>
           <p class="overview">${newMovie.overview}</p>
       </div>
@@ -129,10 +129,18 @@ function saveMovieLocal() {
 //$formSearch.addEventListener('submit', onsubmitSearch);
 
 // ---- 진우 : 검색기능 추가 ---
-$formSearch.addEventListener("submit", search);
+$formSearch.addEventListener("submit",  search);
+$inputSearch.addEventListener('keyup',(e)=>{
+    if(e.target.value === ""){
+        const moviecard = document.getElementById("movie_info");
+        moviecard.innerHTML = "";
+        return movieLists.forEach((movie)=>movieCard(movie))
+    }
+})
 
 function search(e) {
     e.preventDefault(); //기본동작 정지
+    
     const inputValue = $inputSearch.value.toUpperCase();
     const filterdValue = filterValueFn(inputValue);
 
@@ -143,6 +151,7 @@ function search(e) {
         let filteredMovies = movieLists.filter(
             (movie) => movie.title.includes(inputValue) || movie.original_title.toUpperCase().includes(inputValue)
         );
+       
         filteredMovies.forEach((result) => {
             movieCard(result);
         });
@@ -156,7 +165,7 @@ function filterValueFn(inputValue) {
     // submit이벤트 사용시 주의점 * 서브밋 시 기본동작으로 페이지가 새로고침됩니다.
     // 그러므로 이벤트리스너가 반환하는 인지인 이벤트(e)를 가지고 기본동작을 멈춰줘야합니다.
     const trimInputValue = inputValue.trim(); //인풋의 벨류를 변수로저장 .trim()은 양쪽에 공백를 제거해주는 함수이다.
-    console.log(trimInputValue); //인풋밸류를 잘 가지고왔는지 확인하기위한 콘솔로그
+    //인풋밸류를 잘 가지고왔는지 확인하기위한 콘솔로그
 
     // input의 값이 "  "등 빈 공백이면 안된다.
     // trim()을 사용했기떄문에 "        " 이렇게 입력해도 ""와 같아집니다.
@@ -224,30 +233,7 @@ scrollToTopButton.addEventListener("click", function () {
         behavior: "smooth",
     });
 });
-window.addEventListener("scroll", function () {
-    const header = document.querySelector("#header");
-    let windowTop = window.scrollY;
 
-    if (windowTop > 0) {
-        header.style.position = "fixed";
-        header.style.top = "0";
-    } else {
-        header.style.position = "relative";
-    }
-
-    if (window.scrollY > 200) {
-        scrollToTopButton.style.opacity = "1";
-    } else {
-        scrollToTopButton.style.opacity = "0";
-    }
-});
-
-scrollToTopButton.addEventListener("click", function () {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-    });
-});
 
 // darkmode control
 
@@ -279,16 +265,14 @@ searchButton.addEventListener("click", function () {
 
 let changeBannerColor = function () {
     if (document.documentElement.classList.contains("light-mode")) {
-        console.log("light-mode");
         banner.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${newBackgroundImage}'), linear-gradient(to right, #ffffff, rgba(255,255,255,0.9), rgba(0,0,0,0))`;
     } else {
-        console.log("NOT light-mode");
         banner.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${newBackgroundImage}'), linear-gradient(to right, #000000, rgba(0,0,0,0.9), rgba(0,0,0,0))`;
     }
 };
 
 // 평점을 가지고 별을 그려주는 함수이다.
-function makeStars(average,) {
+function makeStars(average) {
     // 인자로 받는 average는 평점을 뜻한다.
     printStarIndex = Math.floor(average / 2); // 평점은 8.6 이런식으로 들어와서 Math.floor를사용해 내려주고 별점은 5점만점으로 2를 나눠주었다.
 
