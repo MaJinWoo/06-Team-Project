@@ -8,6 +8,13 @@ goHomeBtn.addEventListener('click',goHome);
 function goHome(){
     window.location.href = "mymoviesite.html";  
 }
+
+function goToScroll(name) {
+const location1 = document.querySelector('.write__review').offsetTop;
+window.scrollTo({top: location - 100 , behavior: 'smooth'});
+}
+// const location2 = document.querySelector('entire__review')
+
 function getDetail() {
     const selectedMovie = movies.find(movie => movie.id == id);
     let { original_title, title, poster_path, vote_average, overview } = selectedMovie;
