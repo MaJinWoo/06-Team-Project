@@ -6,8 +6,6 @@ const scrollToTopButton = document.querySelector(".top__btn");
 let newMovie;
 let newBackgroundImage;
 
-// 테스트용
-const $sectionTest = document.getElementById("section-test");
 
 const options = {
     method: "GET",
@@ -113,20 +111,14 @@ function moviebanner() {
     });
 }
 
-// 1. 카드를 가져온다
-// 2. 실제 데이터를 넣어준다
-// 3. 랜덤으로 데이터를 돌린다.
+
 
 // *** 진우 : movie에 영화정보 저장
 function saveMovieLocal() {
     window.localStorage.setItem("movie", JSON.stringify(movieLists));
 }
 
-// branch chul주석
-// dom의 input요소 및 from요소 선택!
 
-// form의 submit시 input의 값에 이상이 있는지 확인하기위해 form의 이벤트리스너를 달아주었다.
-//$formSearch.addEventListener('submit', onsubmitSearch);
 
 // ---- 진우 : 검색기능 추가 ---
 $formSearch.addEventListener("submit",  search);
@@ -144,7 +136,6 @@ function search(e) {
     const inputValue = $inputSearch.value.toUpperCase();
     const filterdValue = filterValueFn(inputValue);
 
-    console.log(filterdValue);
     if (filterdValue) {
         const moviecard = document.getElementById("movie_info");
         moviecard.innerHTML = "";

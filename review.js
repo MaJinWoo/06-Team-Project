@@ -12,7 +12,6 @@ const reviewPassword = document.querySelector('.review__password');
 const reviewText = document.querySelector('.review__text');
 const textCount = document.querySelector('.text-count');
 const scrollToTopButton = document.querySelector(".top__btn");
-const wreview = document.querySelector('.write__review');
 const enreview = document.querySelector('.entire__review');
 const reviewList = document.querySelector('.review__list')
 
@@ -128,15 +127,12 @@ function getDetail() {
     content.textContent = overview;
 
     const detail__right = document.createElement('div');
-    //----
     detail__right.setAttribute('class', 'detail__right');
-    //----
 
     const img = document.createElement('img');
     img.setAttribute('src', poster_path);
     img.setAttribute('width', "268");
     img.setAttribute('height', "382");
-    ///
     movieDetail.appendChild(card__detail);
     card__detail.appendChild(detail__left);
     card__detail.appendChild(detail__right);
@@ -144,7 +140,6 @@ function getDetail() {
     detail__left.appendChild(movieTitle);
     detail__left.appendChild(stars);
     detail__left.appendChild(content);
-    ///
     detail__right.appendChild(img);
     showReviews();
 
@@ -326,33 +321,6 @@ scrollToTopButton.addEventListener("click", function () {
         behavior: "smooth",
     });
 });
-window.addEventListener("scroll", function () {
-    const header = document.querySelector("#header");
-    let windowTop = window.scrollY;
-
-    if (windowTop > 0) {
-        header.style.position = "fixed";
-        header.style.top = "0";
-    } else {
-        header.style.position = "relative";
-    }
-
-    if (window.scrollY > 200) {
-        scrollToTopButton.style.opacity = "1";
-    } else {
-        scrollToTopButton.style.opacity = "0";
-    }
-});
-
-scrollToTopButton.addEventListener("click", function () {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-    });
-});
-
-
-
 
 
 // 리뷰 작성 버튼, 전체 리뷰 버튼 클릭 시 이동
