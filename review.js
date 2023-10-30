@@ -89,7 +89,7 @@ function addReview() {
 }
 
 function goHome() {
-    window.location.href = "mymoviesite.html";
+    window.location.href = "index.html";
 }
 function getDetail() {
 
@@ -99,6 +99,7 @@ function getDetail() {
 
     let { original_title, title, poster_path, vote_average, overview } = selectedMovie;
     poster_path = `https://image.tmdb.org/t/p/original/${poster_path}`;
+    vote_average = +vote_average.toFixed(1);
     const detail__left = document.createElement('div');
     const movieMiniTitle = document.createElement('h3');
     ///
@@ -116,7 +117,6 @@ function getDetail() {
     const stars = document.createElement('div');
     stars.setAttribute('class', 'stars')
     stars.innerHTML = makeStars(vote_average);
-
 
     const score = document.createElement('span');
     score.setAttribute('class', 'average');
